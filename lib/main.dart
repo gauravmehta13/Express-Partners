@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get/get.dart';
 
 import 'Constants.dart';
 import 'OnBoarding/Mandatory%20KYC.dart';
@@ -48,8 +49,8 @@ class _MyAppState extends State<MyApp> {
           });
           print(FirebaseAuth.instance.currentUser);
         } else {
-          print("No user yet..");
-          await Future.delayed(Duration(seconds: 4));
+          debugPrint("No user yet..");
+          await Future.delayed(const Duration(seconds: 4));
           if (loading) {
             setState(() {
               home = "/join";
@@ -71,14 +72,14 @@ class _MyAppState extends State<MyApp> {
     return loading
         ? Container(child: Center(child: CircularProgressIndicator()))
         : FeatureDiscovery(
-            child: MaterialApp(
+            child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Packers And Movers',
               theme: themeData(context),
               initialRoute:
                   //"/accept-order/1b922164-eb26-44d7-b655-a4207c230c24",
                   home,
-            ).modular(),
+            ),
           );
   }
 }

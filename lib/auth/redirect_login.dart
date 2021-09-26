@@ -542,39 +542,45 @@ class _RedirectLoginState extends State<RedirectLogin> {
         print("web");
         UserCredential userCredential =
             await confirmationResult!.confirm(otpController.text).then(
-                // ignore: missing_return
-                (user) async {
-          if (user != null) {
-            if (user.additionalUserInfo!.isNewUser == true) {
-              await postData();
-              widget.data != null ? logEvent('SMS_login') : logEvent("Login");
-              setState(() {
-                isLoading = false;
-                isResend = false;
-              });
-              Modular.to
-                  .pushReplacementNamed('/onboarding', arguments: widget.data);
-            } else {
-              var kyc = await getProgress();
-              setState(() {
-                isLoading = false;
-                isResend = false;
-              });
-              if (kyc == true) {
-                widget.data != null ? logEvent('SMS_login') : logEvent("Login");
-                Modular.to.pushReplacementNamed('/');
-              } else {
-                widget.data != null ? logEvent('SMS_login') : logEvent("Login");
-                Modular.to.pushReplacementNamed('/onboarding',
-                    arguments: widget.data);
-              }
-            }
-          }
-          setState(() {
-            isLoading = false;
-            isResend = false;
-          });
-        } as FutureOr<UserCredential> Function(UserCredential));
+                    // ignore: missing_return
+                    (user) async {
+                  if (user != null) {
+                    if (user.additionalUserInfo!.isNewUser == true) {
+                      await postData();
+                      widget.data != null
+                          ? logEvent('SMS_login')
+                          : logEvent("Login");
+                      setState(() {
+                        isLoading = false;
+                        isResend = false;
+                      });
+                      Modular.to.pushReplacementNamed('/onboarding',
+                          arguments: widget.data);
+                    } else {
+                      var kyc = await getProgress();
+                      setState(() {
+                        isLoading = false;
+                        isResend = false;
+                      });
+                      if (kyc == true) {
+                        widget.data != null
+                            ? logEvent('SMS_login')
+                            : logEvent("Login");
+                        Modular.to.pushReplacementNamed('/');
+                      } else {
+                        widget.data != null
+                            ? logEvent('SMS_login')
+                            : logEvent("Login");
+                        Modular.to.pushReplacementNamed('/onboarding',
+                            arguments: widget.data);
+                      }
+                    }
+                  }
+                  setState(() {
+                    isLoading = false;
+                    isResend = false;
+                  });
+                } as FutureOr<UserCredential> Function(UserCredential));
       }
       if (kIsWeb == false) {
         print("app");

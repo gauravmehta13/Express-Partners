@@ -19,7 +19,7 @@ import '../Fade Route.dart';
 import '../Widgets/Counter.dart';
 import '../Widgets/Loading.dart';
 import '../Widgets/No%20Results%20Found.dart';
-import '../auth/redirect%20login.dart';
+import '../auth/redirect_login.dart';
 
 class SMSOnboarding extends StatefulWidget {
   final id;
