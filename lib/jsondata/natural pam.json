@@ -1,0 +1,1358 @@
+{
+    "createdAt": "1623671305597",
+    "intercity": {
+            "baseCities": [
+        {
+          "city": "Pune",
+          "data": [
+            {
+              "fromCity": "Pune",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "toCity": "NCR",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "toCity": "Bangalore",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "toCity": "Hyderabad",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "toCity": "Chennai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        }
+      ],
+      "otherCities": [
+        {
+          "city": "NCR",
+          "data": [
+            {
+              "fromCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "toCity": "Pune",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "toCity": "Mumbai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "toCity": "Bangalore",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "toCity": "Hyderabad",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "toCity": "Chennai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Mumbai",
+          "data": [
+            {
+              "fromCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Pune",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "toCity": "NCR",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Bangalore",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Hyderabad",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Chennai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Hyderabad",
+          "data": [
+            {
+              "fromCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "toCity": "Bangalore",
+              "prices": [
+                {"label": "1 BHK Price", "value": "25000"},
+                {"label": "2 BHK Price", "value": "29000"},
+                {"label": "3 BHK Price", "value": "31000"}
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "toCity": "Chennai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "30000"},
+                {"label": "3 BHK Price", "value": "32000"}
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "toCity": "Pune",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "toCity": "Mumbai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "toCity": "NCR",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Chennai",
+          "data": [
+            {
+              "fromCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Bangalore",
+              "prices": [
+                {"label": "1 BHK Price", "value": "19000"},
+                {"label": "2 BHK Price", "value": "21500"},
+                {"label": "3 BHK Price", "value": "24000"}
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Hyderabad",
+              "prices": [
+                {"label": "1 BHK Price", "value": "28000"},
+                {"label": "2 BHK Price", "value": "31000"},
+                {"label": "3 BHK Price", "value": "33000"}
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Pune",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "toCity": "Mumbai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "toCity": "NCR",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Banglore",
+          "data": [
+            {
+              "fromCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "toCity": "Hyderabad",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "30500"},
+                {"label": "3 BHK Price", "value": "33000"}
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "toCity": "Chennai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "20000"},
+                {"label": "2 BHK Price", "value": "23000"},
+                {"label": "3 BHK Price", "value": "26000"}
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "toCity": "Pune",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "toCity": "Mumbai",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "toCity": "NCR",
+              "prices": [
+                {"label": "1 BHK Price", "value": "26000"},
+                {"label": "2 BHK Price", "value": "33000"},
+                {"label": "3 BHK Price", "value": "30500"}
+              ]
+            }
+          ]
+        }
+      ],
+      "cities": [
+        {
+          "fromCity": "Hyderabad",
+          "increase": null,
+          "oneBHKprice": "25000",
+          "percent": null,
+          "threeBHKprice": "31000",
+          "toCity": "Bangalore",
+          "twoBHKprice": "29000"
+        },
+        {
+          "fromCity": "Hyderabad",
+          "increase": null,
+          "oneBHKprice": "26000",
+          "percent": null,
+          "threeBHKprice": "32000",
+          "toCity": "Chennai",
+          "twoBHKprice": "30000"
+        },
+        {
+          "fromCity": "Chennai",
+          "increase": null,
+          "oneBHKprice": "19000",
+          "percent": null,
+          "threeBHKprice": "24000",
+          "toCity": "Bangalore",
+          "twoBHKprice": "21500"
+        },
+        {
+          "fromCity": "Chennai",
+          "increase": null,
+          "oneBHKprice": "28000",
+          "percent": null,
+          "threeBHKprice": "33000",
+          "toCity": "Hyderabad",
+          "twoBHKprice": "31000"
+        },
+        {
+          "fromCity": "Bangalore",
+          "increase": null,
+          "oneBHKprice": "26000",
+          "percent": null,
+          "threeBHKprice": "33000",
+          "toCity": "Hyderabad",
+          "twoBHKprice": "30500"
+        },
+        {
+          "fromCity": "Bangalore",
+          "increase": null,
+          "oneBHKprice": "20000",
+          "percent": null,
+          "threeBHKprice": "26000",
+          "toCity": "Chennai",
+          "twoBHKprice": "23000"
+        }
+      ],
+      "completed": true
+    },
+    "intracity": {
+      "cities": [
+        {
+          "city": "Bangalore",
+          "increase": null,
+          "oneBHKprice": "9000",
+          "percent": null,
+          "threeBHKprice": "14000",
+          "twoBHKprice": "12000"
+        },
+        {
+          "city": "Hyderabad",
+          "increase": null,
+          "oneBHKprice": "10000",
+          "percent": null,
+          "threeBHKprice": "15000",
+          "twoBHKprice": "13000"
+        },
+        {
+          "city": "Chennai",
+          "increase": null,
+          "oneBHKprice": "7500",
+          "percent": null,
+          "threeBHKprice": "12000",
+          "twoBHKprice": "8500"
+        }
+      ],
+      "completed": "true"
+    },
+    "lastModifiedAt": "1624645705555",
+    "offerings": {
+      "cities": [
+        {
+          "city": "Bangalore",
+          "increase": null,
+          "lift1BHK": "1000",
+          "lift2BHK": "1500",
+          "lift3BHK": "2000",
+          "percent": null,
+          "premium1BHK": "2000",
+          "premium2BHK": "3000",
+          "premium3BHK": "4000",
+          "unpacking1BHK": "2000",
+          "unpacking2BHK": "3000",
+          "unpacking3BHK": "4000",
+          "warehouse1BHK": "200",
+          "warehouse2BHK": "300",
+          "warehouse3BHK": "400"
+        },
+        {
+          "city": "Hyderabad",
+          "increase": null,
+          "lift1BHK": "1000",
+          "lift2BHK": "1500",
+          "lift3BHK": "2000",
+          "percent": null,
+          "premium1BHK": "2000",
+          "premium2BHK": "3000",
+          "premium3BHK": "4000",
+          "unpacking1BHK": "2000",
+          "unpacking2BHK": "3000",
+          "unpacking3BHK": "4000",
+          "warehouse1BHK": "200",
+          "warehouse2BHK": "300",
+          "warehouse3BHK": "400"
+        },
+        {
+          "city": "Chennai",
+          "increase": null,
+          "lift1BHK": "1000",
+          "lift2BHK": "1500",
+          "lift3BHK": "2000",
+          "percent": null,
+          "premium1BHK": "2000",
+          "premium2BHK": "3000",
+          "premium3BHK": "4000",
+          "unpacking1BHK": "2000",
+          "unpacking2BHK": "3000",
+          "unpacking3BHK": "4000",
+          "warehouse1BHK": "200",
+          "warehouse2BHK": "300",
+          "warehouse3BHK": "400"
+        }
+      ],
+      "completed": "true",
+      "free15DaysStorage": false,
+      "insurance": "",
+      "insuranceSelected": false,
+      "premiumPackaging": false,
+      "unpacking": false,
+      "warehouse": false
+    },
+    "selfInfo": {
+      "address": "12, 31, , Avvai Nagar, Thiruvanmiyur, Chennai, Tamil Nadu 600041, India, Thiruvanmiyur",
+      "area": "Thiruvanmiyur",
+      "availability": {
+        "availableThroughoutYear": false,
+        "availablityDates": [
+          "03/06/2021 - 03/06/2021"
+        ],
+        "priorDays": 0
+      },
+      "companyDescription": "Natural packers and movers",
+      "companyName": "Natural Packers & Movers",
+      "contactMobile": "",
+      "contactName": "",
+      "displayImage": "uploads/kycdocuments/packersAndMovers/3a3c111a-06f1-477d-b969-76c1016cebcb.jpeg",
+      "gstNo": "33CMOPM5161N1Z1",
+      "kycDone": true,
+      "mobile": "+919941829002",
+      "name": "Anto",
+      "smsOnboarding": false,
+      "street": "12, 31, , Avvai Nagar, Thiruvanmiyur, Chennai, Tamil Nadu 600041, India",
+      "website": "www.naturalpackersandmovers.com"
+    },
+    "serviceProviderId": "ykAXlXC3WjMG7K6vb6l7LeWcxGI2",
+    "vehicles": {
+      "cities": [
+        {
+          "fourHundredCCPrice": "7000",
+          "fromCity": "Hyderabad",
+          "hatchBackPrice": "9000",
+          "hundredCCPrice": "5000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "6000",
+          "percent": null,
+          "sedanPrice": "12000",
+          "SUVPrice": "14000",
+          "toCity": "Bangalore"
+        },
+        {
+          "fourHundredCCPrice": "8000",
+          "fromCity": "Hyderabad",
+          "hatchBackPrice": "13000",
+          "hundredCCPrice": "6000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "7000",
+          "percent": null,
+          "sedanPrice": "11000",
+          "SUVPrice": "7000",
+          "toCity": "Chennai"
+        },
+        {
+          "fourHundredCCPrice": "6000",
+          "fromCity": "Chennai",
+          "hatchBackPrice": "7000",
+          "hundredCCPrice": "4000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "5000",
+          "percent": null,
+          "sedanPrice": "10000",
+          "SUVPrice": "12000",
+          "toCity": "Bangalore"
+        },
+        {
+          "fourHundredCCPrice": "8000",
+          "fromCity": "Chennai",
+          "hatchBackPrice": "13000",
+          "hundredCCPrice": "6000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "7000",
+          "percent": null,
+          "sedanPrice": "11000",
+          "SUVPrice": "7000",
+          "toCity": "Hyderabad"
+        },
+        {
+          "fourHundredCCPrice": "7000",
+          "fromCity": "Bangalore",
+          "hatchBackPrice": "9000",
+          "hundredCCPrice": "5000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "6000",
+          "percent": null,
+          "sedanPrice": "12000",
+          "SUVPrice": "14000",
+          "toCity": "Hyderabad"
+        },
+        {
+          "fourHundredCCPrice": "6000",
+          "fromCity": "Bangalore",
+          "hatchBackPrice": "7000",
+          "hundredCCPrice": "4000",
+          "increase": null,
+          "oneTwentyFiveCCPrice": "5000",
+          "percent": null,
+          "sedanPrice": "10000",
+          "SUVPrice": "12000",
+          "toCity": "Chennai"
+        }
+      ],
+      "baseCities": [
+        {
+          "city": "Pune",
+          "data": [
+            {
+              "fromCity": "Pune",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "toCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "toCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "toCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Pune",
+              "toCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "otherCities": [
+        {
+          "city": "NCR",
+          "data": [
+            {
+              "fromCity": "NCR",
+              "toCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "toCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "toCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "NCR",
+              "toCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Mumbai",
+          "data": [
+            {
+              "fromCity": "Mumbai",
+              "toCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "toCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "toCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "toCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Mumbai",
+              "toCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Hyderabad",
+          "data": [
+            {
+              "fromCity": "Hyderabad",
+              "toCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "5000"},
+                    {"label": "125-350cc", "value": "6000"},
+                    {"label": "Above 350cc", "value": "7000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "toCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "13000"},
+                    {"label": "Sedan", "value": "11000"},
+                    {"label": "SUV", "value": "7000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "6000"},
+                    {"label": "125-350cc", "value": "7000"},
+                    {"label": "Above 350cc", "value": "8000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "toCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Hyderabad",
+              "toCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Chennai",
+          "data": [
+            {
+              "fromCity": "Chennai",
+              "toCity": "Bangalore",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "7000"},
+                    {"label": "Sedan", "value": "10000"},
+                    {"label": "SUV", "value": "12000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "4000"},
+                    {"label": "125-350cc", "value": "5000"},
+                    {"label": "Above 350cc", "value": "6000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "toCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "13000"},
+                    {"label": "Sedan", "value": "11000"},
+                    {"label": "SUV", "value": "7000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "6000"},
+                    {"label": "125-350cc", "value": "7000"},
+                    {"label": "Above 350cc", "value": "8000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "toCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Chennai",
+              "toCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "city": "Bangalore",
+          "data": [
+            {
+              "fromCity": "Bangalore",
+              "toCity": "Hyderabad",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "toCity": "Chennai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "toCity": "Pune",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "toCity": "Mumbai",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            },
+            {
+              "fromCity": "Bangalore",
+              "toCity": "NCR",
+              "increase": null,
+              "percent": null,
+              "data": [
+                {
+                  "label": "Car movement cost",
+                  "prices": [
+                    {"label": "HatchBack", "value": "9000"},
+                    {"label": "Sedan", "value": "12000"},
+                    {"label": "SUV", "value": "14000"}
+                  ]
+                },
+                {
+                  "label": "Bike movement cost",
+                  "prices": [
+                    {"label": "Below 125cc", "value": "9000"},
+                    {"label": "125-350cc", "value": "12000"},
+                    {"label": "Above 350cc", "value": "14000"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "completed": "true"
+    }
+  }
