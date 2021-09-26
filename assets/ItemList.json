@@ -1,0 +1,1802 @@
+[
+    {
+        "type": "1 BHK",
+        "custom": [
+            {
+                "itemName": "Bed",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 80,
+                        "b": 66,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "King Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Queen Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 60,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 36,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Mattress",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 60,
+                                "h": 6,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 36,
+                                "h": 4,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Sofa",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "1-3 Seater",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "4-8 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "8+ Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 102,
+                                "b": 72,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Dining Table",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 54,
+                        "b": 44,
+                        "h": 30,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "4 Seater",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 54,
+                                "b": 44,
+                                "h": 30,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    },
+                    {
+                        "itemName": "6 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 78,
+                                "b": 40,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Center Table",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 42,
+                        "b": 24,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/66/66023.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Refridgerator",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 26,
+                        "h": 60,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "100-150 L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 26,
+                                "h": 60,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "150-250 L",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 20,
+                                "h": 49,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "250+ L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 23,
+                                "h": 67,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Television",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 34,
+                        "b": 7,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Small",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 2,
+                                "h": 12,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Medium",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 34,
+                                "b": 7,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Large",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 50,
+                                "b": 5,
+                                "h": 25,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Washing Machine",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 20,
+                        "h": 36,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2708/2708254.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Food Item Carton",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Crockery Carton",
+                "selected": false,
+                "quantity": 3,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Kitchen Utensils Carton",
+                "selected": false,
+                "quantity": 3,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Gas Stove",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 24,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2267/2267313.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Shoes Carton",
+                "selected": false,
+                "quantity": 5,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "House Keeping Carton",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Bedding Carton",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Large Carton",
+                "selected": false,
+                "quantity": 9,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Medium Carton",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Suitcase Large",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 16,
+                        "b": 22,
+                        "h": 30
+                    },
+                    "image": "https://cdn3.iconfinder.com/data/icons/flaticons-1/24/flaticon_case-512.png"
+                },
+                "custom": []
+            }
+        ]
+    },
+    {
+        "type": "2 BHK",
+        "custom": [
+            {
+                "itemName": "Bed",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 80,
+                        "b": 66,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "King Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Queen Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 60,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 36,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Mattress",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 60,
+                                "h": 6,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 36,
+                                "h": 4,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Sofa",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "1-3 Seater",
+                        "selected": false,
+                        "quantity": 3,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "4-8 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "8+ Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 102,
+                                "b": 72,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Dining Chair",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 20,
+                        "b": 20,
+                        "h": 30,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/1940/1940605.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Dining Table",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 54,
+                        "b": 44,
+                        "h": 30,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "4 Seater",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 54,
+                                "b": 44,
+                                "h": 30,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    },
+                    {
+                        "itemName": "6 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 78,
+                                "b": 40,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Center Table",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 42,
+                        "b": 24,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/66/66023.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Refridgerator",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 26,
+                        "h": 60,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "100-150 L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 26,
+                                "h": 60,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "150-250 L",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 20,
+                                "h": 49,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "250+ L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 23,
+                                "h": 67,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Air Conditionar",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 26,
+                        "b": 26,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/114/114735.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Microwave Oven",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 24,
+                        "h": 18,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2187/2187385.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Television",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 34,
+                        "b": 7,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Small",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 2,
+                                "h": 12,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Medium",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 34,
+                                "b": 7,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Large",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 50,
+                                "b": 5,
+                                "h": 25,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Washing Machine",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 20,
+                        "h": 36,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2708/2708254.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Food Item Carton",
+                "selected": false,
+                "quantity": 3,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Crockery Carton",
+                "selected": false,
+                "quantity": 5,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Kitchen Utensils Carton",
+                "selected": false,
+                "quantity": 5,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Gas Stove",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 24,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2267/2267313.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Shoes Carton",
+                "selected": false,
+                "quantity": 7,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "House Keeping Carton",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Bedding Carton",
+                "selected": false,
+                "quantity": 23,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Large Carton",
+                "selected": false,
+                "quantity": 12,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Medium Carton",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Suitcase Large",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 16,
+                        "b": 22,
+                        "h": 30
+                    },
+                    "image": "https://cdn3.iconfinder.com/data/icons/flaticons-1/24/flaticon_case-512.png"
+                },
+                "custom": []
+            }
+        ]
+    },
+    {
+        "type": "3 BHK",
+        "custom": [
+            {
+                "itemName": "Bed",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 80,
+                        "b": 66,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "King Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Queen Size",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 60,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 2,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 66,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 80,
+                                "b": 36,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/128/895/895474.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Mattress",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Double",
+                        "selected": false,
+                        "quantity": 2,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 60,
+                                "h": 6,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    },
+                    {
+                        "itemName": "Single",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 72,
+                                "b": 36,
+                                "h": 4,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3821/3821379.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Sofa",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 72,
+                        "b": 60,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "1-3 Seater",
+                        "selected": false,
+                        "quantity": 3,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "4-8 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 55,
+                                "b": 33,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    },
+                    {
+                        "itemName": "8+ Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 102,
+                                "b": 72,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2336/2336855.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Dining Chair",
+                "selected": false,
+                "quantity": 6,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 20,
+                        "b": 20,
+                        "h": 30,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/1940/1940605.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Dining Table",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 54,
+                        "b": 44,
+                        "h": 30,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "4 Seater",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 54,
+                                "b": 44,
+                                "h": 30,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    },
+                    {
+                        "itemName": "6 Seater",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 78,
+                                "b": 40,
+                                "h": 32,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/2187/2187505.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Center Table",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Furniture",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 42,
+                        "b": 24,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/66/66023.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Refridgerator",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 26,
+                        "h": 60,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "100-150 L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 26,
+                                "h": 60,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "150-250 L",
+                        "selected": false,
+                        "quantity": 1,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 20,
+                                "h": 49,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    },
+                    {
+                        "itemName": "250+ L",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 25,
+                                "b": 23,
+                                "h": 67,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/3474/3474313.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Air Conditionar",
+                "selected": false,
+                "quantity": 3,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 26,
+                        "b": 26,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/114/114735.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Microwave Oven",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 24,
+                        "h": 18,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2187/2187385.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Television",
+                "selected": false,
+                "quantity": 0,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 34,
+                        "b": 7,
+                        "h": 24,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                },
+                "custom": [
+                    {
+                        "itemName": "Small",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 24,
+                                "b": 2,
+                                "h": 12,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Medium",
+                        "selected": false,
+                        "quantity": 2,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 34,
+                                "b": 7,
+                                "h": 24,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    },
+                    {
+                        "itemName": "Large",
+                        "selected": false,
+                        "quantity": 0,
+                        "additionalDetails": {
+                            "description": "",
+                            "dimensions": {
+                                "l": 50,
+                                "b": 5,
+                                "h": 25,
+                                "unit": "inch"
+                            },
+                            "image": "https://image.flaticon.com/icons/png/512/31/31106.png"
+                        }
+                    }
+                ]
+            },
+            {
+                "itemName": "Washing Machine",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Appliances",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 20,
+                        "h": 36,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2708/2708254.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Food Item Carton",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Crockery Carton",
+                "selected": false,
+                "quantity": 6,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Kitchen Utensils Carton",
+                "selected": false,
+                "quantity": 6,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Gas Stove",
+                "selected": false,
+                "quantity": 1,
+                "categoryName": "Kitchen",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 24,
+                        "b": 24,
+                        "h": 6,
+                        "unit": "inch"
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/2267/2267313.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Shoes Carton",
+                "selected": false,
+                "quantity": 10,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "House Keeping Carton",
+                "selected": false,
+                "quantity": 2,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Bedding Carton",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Large Carton",
+                "selected": false,
+                "quantity": 15,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 30,
+                        "b": 18,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Medium Carton",
+                "selected": false,
+                "quantity": 6,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 18,
+                        "b": 15,
+                        "h": 20
+                    },
+                    "image": "https://image.flaticon.com/icons/png/512/65/65686.png"
+                },
+                "custom": []
+            },
+            {
+                "itemName": "Suitcase Large",
+                "selected": false,
+                "quantity": 4,
+                "categoryName": "Small Items",
+                "additionalDetails": {
+                    "description": "",
+                    "dimensions": {
+                        "l": 16,
+                        "b": 22,
+                        "h": 30
+                    },
+                    "image": "https://cdn3.iconfinder.com/data/icons/flaticons-1/24/flaticon_case-512.png"
+                },
+                "custom": []
+            }
+        ]
+    }
+]
