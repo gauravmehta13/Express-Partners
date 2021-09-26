@@ -4,13 +4,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'Constants.dart';
-import 'Fade Route.dart';
-import 'OnBoarding/Availability.dart';
-import 'OnBoarding/Price.dart';
-import 'Screens/Check%20revenue%20.dart';
-import 'Screens/Order/My%20Orders.dart';
-import 'Screens/Review%20screen.dart';
+import 'OnBoarding/availability.dart';
+import 'OnBoarding/price.dart';
+import 'Screens/Order/my_orders.dart';
+import 'Screens/check_revenue .dart';
+import 'Screens/review_screen.dart';
+import 'constants.dart';
+import 'fade_route.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

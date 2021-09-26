@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Constants.dart';
+import '../constants.dart';
 
 class StageCompleted extends StatelessWidget {
   final tilte;

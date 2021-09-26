@@ -7,8 +7,8 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../Constants.dart';
-import 'Map%20Based%20Tracking.dart';
+import '../../constants.dart';
+import 'map_based_tracking.dart';
 //https://dribbble.com/shots/12199961-Package-Order-List-and-Order-Summary-iOS-Mobile-App-Senz
 
 class OrderDetails extends StatefulWidget {

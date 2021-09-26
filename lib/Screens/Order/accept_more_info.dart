@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 
-import '../../Constants.dart';
+import '../../constants.dart';
 
 class AcceptMoreInfo extends StatefulWidget {
   final details;

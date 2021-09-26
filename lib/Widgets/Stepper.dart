@@ -1,6 +1,6 @@
 library fa_stepper;
 
-import 'package:express_partner/Widgets/stepper%20colors.dart';
+import 'package:express_partner/Widgets/stepper_colors.dart';
 import 'package:flutter/material.dart';
 // Copyright 2016 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be

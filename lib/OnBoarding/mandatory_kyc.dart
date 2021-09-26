@@ -13,11 +13,11 @@ import 'package:mime/mime.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
-import '../Appbar.dart';
-import '../Constants.dart';
-import '../Fade Route.dart';
-import '../Screens/Review%20screen.dart';
-import '../Widgets/Loading.dart';
+import '../Screens/review_screen.dart';
+import '../Widgets/loading.dart';
+import '../appbar.dart';
+import '../constants.dart';
+import '../fade_route.dart';
 import '../model/place_search.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;

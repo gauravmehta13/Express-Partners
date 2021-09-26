@@ -11,13 +11,13 @@ import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 
-import '../Appbar.dart';
-import '../Constants.dart';
-import '../Fade Route.dart';
-import '../OnBoarding/Mandatory%20KYC.dart';
-import '../OnBoarding/Price.dart';
-import '../Widgets/Loading.dart';
-import 'BottomNavBar.dart';
+import '../OnBoarding/mandatory_kyc.dart';
+import '../OnBoarding/price.dart';
+import '../Widgets/loading.dart';
+import '../appbar.dart';
+import '../constants.dart';
+import '../fade_route.dart';
+import 'bottom_navbar.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

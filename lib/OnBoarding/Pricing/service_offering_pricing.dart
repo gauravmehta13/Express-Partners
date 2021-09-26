@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../Constants.dart';
-import '../../Fade Route.dart';
-import '../../Screens/BottomNavBar.dart';
-import '../Availability.dart';
+import '../../Screens/bottom_navbar.dart';
+import '../../constants.dart';
+import '../../fade_route.dart';
+import '../availability.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../OnBoarding/Pricing/Within City Pricing.dart';
+import '../OnBoarding/Pricing/within_city_pricing.dart';
 
 class MyStepper extends StatefulWidget {
   @override

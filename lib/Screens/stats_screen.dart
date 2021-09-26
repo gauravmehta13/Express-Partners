@@ -1,8 +1,8 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 
-import '../Constants.dart';
-import '../Widgets/stats%20grid.dart';
+import '../Widgets/stats_grid.dart';
+import '../constants.dart';
 
 class StatsScreen extends StatefulWidget {
   @override

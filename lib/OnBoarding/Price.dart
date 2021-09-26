@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../Constants.dart';
-import '../ProgressBar.dart';
-import '../Widgets/Loading.dart';
-import '../Widgets/Stepper.dart';
-import 'Pricing/OutStation Pricing .dart';
-import 'Pricing/Service%20Offering%20Pricing.dart';
-import 'Pricing/Vehicle%20Pricing.dart';
-import 'Pricing/Within City Pricing.dart';
+import '../Widgets/loading.dart';
+import '../Widgets/stepper.dart';
+import '../constants.dart';
+import '../progress_bar.dart';
+import 'Pricing/outstation_pricing.dart';
+import 'Pricing/service_offering_pricing.dart';
+import 'Pricing/vehicle_pricing.dart';
+import 'Pricing/within_city_pricing.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

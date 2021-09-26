@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../Constants.dart';
-import 'Tracking.dart';
+import '../../constants.dart';
+import 'tracking.dart';
 
 class FlutterMap extends StatefulWidget {
   final data;

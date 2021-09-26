@@ -5,9 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../Constants.dart';
 import '../Widgets/data.dart';
-import '../Widgets/stats%20grid.dart';
+import '../Widgets/stats_grid.dart';
+import '../constants.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

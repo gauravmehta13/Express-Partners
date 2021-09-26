@@ -5,8 +5,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:mime/mime.dart';
 
-import '../../Constants.dart';
-import '../../Widgets/Stepper.dart';
+import '../../Widgets/stepper.dart';
+import '../../constants.dart';
 
 class Tracking extends StatefulWidget {
   Map data;

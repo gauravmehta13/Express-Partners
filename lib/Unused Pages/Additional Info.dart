@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../Appbar.dart';
-import '../Fade Route.dart';
-import '../OnBoarding/OnBoarding.dart';
+import '../OnBoarding/onboarding.dart';
+import '../appbar.dart';
+import '../fade_route.dart';
 
 class AdditionalInfo extends StatefulWidget {
   @override

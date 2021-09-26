@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
-import '../../Constants.dart';
-import '../../Fade Route.dart';
-import 'My%20Orders.dart';
-import 'accept%20more%20info.dart';
+import '../../constants.dart';
+import '../../fade_route.dart';
+import 'accept_more_info.dart';
+import 'my_orders.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

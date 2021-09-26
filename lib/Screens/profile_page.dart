@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Settings.dart';
+import '../settings.dart';
 
 class EditProfilePage extends StatefulWidget {
   @override

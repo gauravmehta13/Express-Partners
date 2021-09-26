@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../Constants.dart';
-import '../Fade Route.dart';
-import '../Screens/Terms%20And%20Conditions.dart';
+import '../Screens/tnc.dart';
+import '../constants.dart';
+import '../fade_route.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 var focusNode = FocusNode();

@@ -2,9 +2,9 @@ import 'package:badges/badges.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import '../Constants.dart';
-import '../Fade Route.dart';
-import '../Screens/Order/Notifications.dart';
+import '../Screens/Order/notifications.dart';
+import '../constants.dart';
+import '../fade_route.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override

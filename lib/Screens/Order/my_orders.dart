@@ -7,9 +7,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../Constants.dart';
-import 'Map%20Based%20Tracking.dart';
-import 'Order Details.dart';
+import '../../constants.dart';
+import 'map_based_tracking.dart';
+import 'order_details.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

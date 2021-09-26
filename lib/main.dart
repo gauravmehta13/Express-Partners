@@ -6,25 +6,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 
-import 'Constants.dart';
-import 'OnBoarding/Mandatory%20KYC.dart';
-import 'OnBoarding/OnBoarding.dart';
-import 'OnBoarding/SMS%20Onboarding.dart';
-import 'Screens/BottomNavBar.dart';
-import 'Screens/Order/Notifications.dart';
-import 'Screens/Terms And Conditions.dart';
+import 'OnBoarding/mandatory_kyc.dart';
+import 'OnBoarding/onboarding.dart';
+import 'OnBoarding/sms_onboarding.dart';
+import 'Screens/Order/notifications.dart';
+import 'Screens/bottom_navbar.dart';
+import 'Screens/tnc.dart';
+import 'constants.dart';
 import 'noti/importNoti.dart';
 import 'noti/notis/ab/abNoti.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(ModularApp(module: AppModule(), child: MyApp()));
+  runApp(MyApp());
 }
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -39,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       final subscription = FirebaseAuth.instance.idTokenChanges().listen(null);
       subscription.onData((event) async {
         if (event != null) {
-          print("We have a user now");
+          debugPrint("We have a user now");
           setState(() {
             home = "/";
           });
@@ -47,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           setState(() {
             loading = false;
           });
-          print(FirebaseAuth.instance.currentUser);
+          debugPrint(FirebaseAuth.instance.currentUser!.uid);
         } else {
           debugPrint("No user yet..");
           await Future.delayed(const Duration(seconds: 4));
@@ -70,12 +72,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Container(child: Center(child: CircularProgressIndicator()))
+        ? const Center(child: CircularProgressIndicator())
         : FeatureDiscovery(
             child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Packers And Movers',
               theme: themeData(context),
+              getPages: [],
               initialRoute:
                   //"/accept-order/1b922164-eb26-44d7-b655-a4207c230c24",
                   home,

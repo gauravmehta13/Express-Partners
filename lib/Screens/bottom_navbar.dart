@@ -7,11 +7,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../Constants.dart';
-import '../Drawer.dart';
-import '../Widgets/Custom%20Appbar.dart';
-import 'Homepage.dart';
-import 'Stats Screen.dart';
+import '../Widgets/custom_appbar.dart';
+import '../constants.dart';
+import '../drawer.dart';
+import 'home.dart';
+import 'stats_screen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 FirebaseMessaging messaging = FirebaseMessaging.instance;

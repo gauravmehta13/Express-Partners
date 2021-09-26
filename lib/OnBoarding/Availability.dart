@@ -8,11 +8,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../Appbar.dart';
-import '../Constants.dart';
-import '../Fade Route.dart';
-import '../Screens/BottomNavBar.dart';
-import '../Widgets/Counter.dart';
+import '../Screens/bottom_navbar.dart';
+import '../Widgets/counter.dart';
+import '../appbar.dart';
+import '../constants.dart';
+import '../fade_route.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 

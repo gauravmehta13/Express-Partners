@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import "ProgressBar.dart";
+import 'progress_bar.dart';
 
 class MyAppBar extends StatelessWidget {
   final int curStep;

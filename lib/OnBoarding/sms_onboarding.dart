@@ -13,13 +13,13 @@ import 'package:intl/intl.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:timelines/timelines.dart';
 
-import '../Constants.dart';
-import '../Drawer.dart';
-import '../Fade Route.dart';
-import '../Widgets/Counter.dart';
-import '../Widgets/Loading.dart';
-import '../Widgets/No%20Results%20Found.dart';
+import '../Widgets/counter.dart';
+import '../Widgets/loading.dart';
+import '../Widgets/no_results.dart';
 import '../auth/redirect_login.dart';
+import '../constants.dart';
+import '../drawer.dart';
+import '../fade_route.dart';
 
 class SMSOnboarding extends StatefulWidget {
   final id;

@@ -9,8 +9,8 @@ import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 
-import '../Constants.dart';
-import '../Widgets/Counter.dart';
+import '../Widgets/counter.dart';
+import '../constants.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
