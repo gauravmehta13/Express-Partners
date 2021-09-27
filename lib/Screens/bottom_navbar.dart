@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:express_partner/OnBoarding/mandatory_kyc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get/get.dart';
 
 import '../Widgets/custom_appbar.dart';
 import '../constants.dart';
@@ -64,7 +66,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
               CupertinoDialogAction(
                 child: Text('OK'),
                 onPressed: () {
-                  Modular.to.pushReplacementNamed("/onboarding");
+                  Get.to(() => MandatoryKYC());
                 },
               ),
             ],
@@ -108,7 +110,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                         ),
                         decoration: BoxDecoration(
                           color: _currentIndex == key
-                              ? C.primaryColor
+                              ? primaryColor
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(20.0),
                         ),

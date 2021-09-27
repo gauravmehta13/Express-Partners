@@ -1,9 +1,7 @@
 import 'dart:math';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -39,10 +37,10 @@ List<dynamic> mapByKey(String keyName, List<dynamic> input) {
 List? baseLocation = ["Pune"];
 
 logEvent(String text) {
-  if (kIsWeb) {
-    FirebaseAnalytics().logEvent(name: text, parameters: null);
-    print("Logged Event");
-  }
+  // if (kIsWeb) {
+  //   FirebaseAnalytics().logEvent(name: text, parameters: null);
+  //   print("Logged Event");
+  // }
 }
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -62,8 +60,8 @@ const SizedBox box20 = SizedBox(
 const SizedBox box30 = SizedBox(
   height: 30,
 );
-const Color primaryColor = Color(0xFF3f51b5);
-const Color secondaryColor = Color(0xFFf9a825);
+const Color secondaryColor = Color(0xFFea6000);
+const Color primaryColor = Color(0xFF0a2635);
 
 const Color priceBarColor = Color(0xFFeceef8);
 const Text priceConfirmText = Text("Review & Confirm");
@@ -87,8 +85,9 @@ checkLogout(ctx) {
 
 themeData(context) {
   return ThemeData(
-    appBarTheme:
-        Theme.of(context).appBarTheme.copyWith(brightness: Brightness.light),
+    appBarTheme: Theme.of(context)
+        .appBarTheme
+        .copyWith(brightness: Brightness.light, color: primaryColor),
     textTheme: GoogleFonts.montserratTextTheme(
       Theme.of(context).textTheme,
     ),
@@ -195,8 +194,9 @@ class C {
   static const wbox30 = SizedBox(
     width: 30,
   );
-  static const primaryColor = Color(0xFF3f51b5);
-  static const secondaryColor = Color(0xFFf9a825);
+
+  static const Color primaryColor = Color(0xFFea6001);
+  static const Color secondaryColor = Color(0xFF0a2635);
 }
 
 class Palette {

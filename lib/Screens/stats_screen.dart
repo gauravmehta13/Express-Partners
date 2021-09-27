@@ -13,7 +13,7 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: C.primaryColor,
+      backgroundColor: primaryColor,
       body: CustomScrollView(
         physics: ClampingScrollPhysics(),
         slivers: <Widget>[

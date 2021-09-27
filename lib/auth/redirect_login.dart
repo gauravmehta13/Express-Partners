@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:express_partner/OnBoarding/mandatory_kyc.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../Screens/tnc.dart';
@@ -40,6 +41,7 @@ class _RedirectLoginState extends State<RedirectLogin> {
   var isOTPScreen = false;
   var verificationCode = '';
 
+  @override
   void initState() {
     super.initState();
     if (_auth.currentUser != null) {
@@ -436,23 +438,29 @@ class _RedirectLoginState extends State<RedirectLogin> {
                     isLoading = false;
                     isResend = false;
                   });
-                  Modular.to.pushReplacementNamed('/onboarding',
-                      arguments: widget.data);
+                  Get.to(() => MandatoryKYC(
+                        data: widget.data,
+                      ));
+                  // Modular.to.pushReplacementNamed('/onboarding',
+                  //     arguments: );
                 } else {
-                  var kyc = await getProgress();
-                  setState(() {
-                    isLoading = false;
-                    isResend = false;
-                  });
-                  if (kyc == true) {
-                    Modular.to.pushReplacementNamed('/');
-                  } else {
-                    Modular.to.pushReplacementNamed('/onboarding',
-                        arguments: widget.data);
-                  }
+                  Get.to(() => MandatoryKYC(
+                        data: widget.data,
+                      ));
+                  // var kyc = await getProgress();
+                  // setState(() {
+                  //   isLoading = false;
+                  //   isResend = false;
+                  // });
+                  // if (kyc == true) {
+                  //   Modular.to.pushReplacementNamed('/');
+                  // } else {
+                  //   Modular.to.pushReplacementNamed('/onboarding',
+                  //       arguments: widget.data);
+                  // }
                 }
               }
-              ;
+
               setState(() {
                 isLoading = false;
                 isResend = false;
@@ -495,38 +503,21 @@ class _RedirectLoginState extends State<RedirectLogin> {
   }
 
   postData() async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     print(_auth.currentUser!.uid);
-    try {
-      final response = await dio.post(
-          'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?type=packersAndMoversSP',
-          data: {
-            "type": "packersAndMoversSP",
-            "tenantUsecase": "pam",
-            "tenantSet_id": "PAM01",
-            "localCities": widget.intracity,
-            "outstationCities": widget.intercity,
-            "id": _auth.currentUser!.uid,
-            "mobile": _auth.currentUser!.phoneNumber,
-            'name': name.text
-          });
-      print(response);
-      print(response.statusCode);
-    } catch (e) {
-      print(e);
-    }
-  }
 
-  getProgress() async {
-    try {
-      final response = await dio.get(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?tenantSet_id=PAM01&tenantUsecase=pam&type=packersAndMoversSP&id=${_auth.currentUser!.uid}&checkDoneKyc=true',
-      );
-      Map<String, dynamic> map = json.decode(response.toString());
-      print(map["resp"]);
-      return map["resp"];
-    } catch (e) {
-      print(e);
-    }
+    Map<String, dynamic> data = {
+      "uid": _auth.currentUser!.uid,
+      "mobile": _auth.currentUser!.phoneNumber,
+      'name': name.text,
+      "email": _auth.currentUser!.email
+    };
+
+    var database = firebaseFirestore
+        .collection("accounts")
+        .doc(_auth.currentUser!.uid)
+        .set(data);
+    return database;
   }
 
   confirmOtp() async {
@@ -542,45 +533,47 @@ class _RedirectLoginState extends State<RedirectLogin> {
         print("web");
         UserCredential userCredential =
             await confirmationResult!.confirm(otpController.text).then(
-                    // ignore: missing_return
-                    (user) async {
-                  if (user != null) {
-                    if (user.additionalUserInfo!.isNewUser == true) {
-                      await postData();
-                      widget.data != null
-                          ? logEvent('SMS_login')
-                          : logEvent("Login");
-                      setState(() {
-                        isLoading = false;
-                        isResend = false;
-                      });
-                      Modular.to.pushReplacementNamed('/onboarding',
-                          arguments: widget.data);
-                    } else {
-                      var kyc = await getProgress();
-                      setState(() {
-                        isLoading = false;
-                        isResend = false;
-                      });
-                      if (kyc == true) {
-                        widget.data != null
-                            ? logEvent('SMS_login')
-                            : logEvent("Login");
-                        Modular.to.pushReplacementNamed('/');
-                      } else {
-                        widget.data != null
-                            ? logEvent('SMS_login')
-                            : logEvent("Login");
-                        Modular.to.pushReplacementNamed('/onboarding',
-                            arguments: widget.data);
-                      }
-                    }
-                  }
-                  setState(() {
-                    isLoading = false;
-                    isResend = false;
-                  });
-                } as FutureOr<UserCredential> Function(UserCredential));
+                // ignore: missing_return
+                (user) async {
+          if (user != null) {
+            if (user.additionalUserInfo!.isNewUser == true) {
+              await postData();
+              widget.data != null ? logEvent('SMS_login') : logEvent("Login");
+              setState(() {
+                isLoading = false;
+                isResend = false;
+              });
+              Get.to(() => MandatoryKYC(
+                    data: widget.data,
+                  ));
+            } else {
+              setState(() {
+                isLoading = false;
+                isResend = false;
+              });
+              Get.to(() => MandatoryKYC(
+                    data: widget.data,
+                  ));
+              // if (kyc == true) {
+              //   widget.data != null
+              //       ? logEvent('SMS_login')
+              //       : logEvent("Login");
+              //   Modular.to.pushReplacementNamed('/');
+              // } else {
+              //   widget.data != null
+              //       ? logEvent('SMS_login')
+              //       : logEvent("Login");
+              //   Modular.to.pushReplacementNamed('/onboarding',
+              //       arguments: widget.data);
+              // }
+            }
+          }
+          setState(() {
+            isLoading = false;
+            isResend = false;
+          });
+          return user;
+        });
       }
       if (kIsWeb == false) {
         print("app");
@@ -589,6 +582,7 @@ class _RedirectLoginState extends State<RedirectLogin> {
                 verificationId: verificationCode,
                 smsCode: otpController.text.toString()))
             .then((user) async {
+          // ignore: unnecessary_null_comparison
           if (user != null) if (user.additionalUserInfo!.isNewUser == true) {
             await postData();
             widget.data != null ? logEvent('SMS_login') : logEvent("Login");
@@ -596,22 +590,26 @@ class _RedirectLoginState extends State<RedirectLogin> {
               isLoading = false;
               isResend = false;
             });
-            Modular.to
-                .pushReplacementNamed('/onboarding', arguments: widget.data);
+            Get.to(() => MandatoryKYC(
+                  data: widget.data,
+                ));
           } else {
-            var kyc = await getProgress();
-            setState(() {
-              isLoading = false;
-              isResend = false;
-            });
-            if (kyc == true) {
-              widget.data != null ? logEvent('SMS_login') : logEvent("Login");
-              Modular.to.pushReplacementNamed('/');
-            } else {
-              widget.data != null ? logEvent('SMS_login') : logEvent("Login");
-              Modular.to
-                  .pushReplacementNamed('/onboarding', arguments: widget.data);
-            }
+            // var kyc = await getProgress();
+            // setState(() {
+            //   isLoading = false;
+            //   isResend = false;
+            // });
+            // if (kyc == true) {
+            //   widget.data != null ? logEvent('SMS_login') : logEvent("Login");
+            //      Get.to(()=> MandatoryKYC(
+            //   data: widget.data,
+            // ));
+            // } else {
+            //   widget.data != null ? logEvent('SMS_login') : logEvent("Login");
+            //   Get.to(()=> MandatoryKYC(
+            //   data: widget.data,
+            // ));
+            // }
           }
         }).catchError((error) {
           print(error);

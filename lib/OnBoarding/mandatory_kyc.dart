@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:file_picker/file_picker.dart';
@@ -31,7 +32,7 @@ class MandatoryKYC extends StatefulWidget {
 }
 
 class _MandatoryKYCState extends State<MandatoryKYC> {
-  loc.Location location = new loc.Location();
+  loc.Location location = loc.Location();
   String? lat;
   String? lng;
   late bool _serviceEnabled;
@@ -45,14 +46,14 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   bool? userDetails = true;
   List<PlaceSearch>? pickupSearchResults;
   final formKey = GlobalKey<FormState>();
-  var area = new TextEditingController();
-  var companyName = new TextEditingController();
-  var streetAddress = new TextEditingController();
-  var gstNo = new TextEditingController();
-  var companyDescription = new TextEditingController();
-  var websiteLink = new TextEditingController();
-  var pointOfContactName = new TextEditingController();
-  var pointOfContactNumber = new TextEditingController();
+  var area = TextEditingController();
+  var companyName = TextEditingController();
+  var streetAddress = TextEditingController();
+  var gstNo = TextEditingController();
+  var companyDescription = TextEditingController();
+  var websiteLink = TextEditingController();
+  var pointOfContactName = TextEditingController();
+  var pointOfContactNumber = TextEditingController();
   List baseCity = [];
 
   GlobalKey<EnsureVisibleState>? ensureKey;
@@ -190,7 +191,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                       setState(() {
                         sendingData = true;
                       });
-                      postKYCData();
+                      postUserInfoData();
                     }
                   },
             child: sendingData == true || uploadingImages == true
@@ -264,10 +265,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                       SizedBox(
                         height: 30,
                       ),
-                      new TextFormField(
+                      TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: companyName,
-                        decoration: new InputDecoration(
+                        decoration: InputDecoration(
                             prefixIcon: Icon(FontAwesomeIcons.addressCard),
                             isDense: true, // Added this
                             contentPadding: EdgeInsets.all(15),
@@ -279,9 +280,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                 color: Color(0xFF2821B5),
                               ),
                             ),
-                            border: new OutlineInputBorder(
+                            border: OutlineInputBorder(
                                 borderSide:
-                                    new BorderSide(color: Colors.grey[200]!)),
+                                    BorderSide(color: Colors.grey[200]!)),
                             labelText: "Name of Company*"),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -291,13 +292,13 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                         },
                       ),
                       box20,
-                      new TextFormField(
+                      TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: area,
                         onChanged: (value) {
                           //  searchPickup(value);
                         },
-                        decoration: new InputDecoration(
+                        decoration: InputDecoration(
                             prefixIcon: Icon(Icons.gps_fixed),
                             isDense: true, // Added this
                             contentPadding: EdgeInsets.all(15),
@@ -309,9 +310,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                 color: Color(0xFF2821B5),
                               ),
                             ),
-                            border: new OutlineInputBorder(
+                            border: OutlineInputBorder(
                                 borderSide:
-                                    new BorderSide(color: Colors.grey[200]!)),
+                                    BorderSide(color: Colors.grey[200]!)),
                             labelText: "Area*"),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -327,11 +328,11 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               SizedBox(
                                 height: 20,
                               ),
-                              new TextFormField(
+                              TextFormField(
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 controller: streetAddress,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     isDense: true, // Added this
                                     prefixIcon: Icon(FontAwesomeIcons.building),
                                     contentPadding: EdgeInsets.all(15),
@@ -343,8 +344,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                         color: Color(0xFF2821B5),
                                       ),
                                     ),
-                                    border: new OutlineInputBorder(
-                                        borderSide: new BorderSide(
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                             color: Colors.grey[200]!)),
                                     labelText: "Street Address*"),
                                 validator: (value) {
@@ -464,9 +465,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                   itemCount: pickupSearchResults!.length,
                                   itemBuilder: (context, index) {
                                     return Container(
-                                      decoration: new BoxDecoration(
-                                          border: new Border(
-                                              bottom: new BorderSide(
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
                                                   color: Colors.grey[100]!))),
                                       child: ListTile(
                                         dense: true,
@@ -518,10 +519,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               return true;
                             },
                             // ignore: missing_return
-                            onBackgroundTap: () {
-                              FeatureDiscovery.dismissAll(context);
-                              showCatalog();
-                            } as Future<bool> Function()?,
+                            // onBackgroundTap: () {
+                            //   FeatureDiscovery.dismissAll(context);
+                            //   showCatalog();
+                            // },
 
                             contentLocation: ContentLocation.below,
                             title: Text(
@@ -593,7 +594,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                           itemCount: otherImagesLink.length,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            return new Container(
+                            return Container(
                               height: 100,
                               width: MediaQuery.of(context).size.width / 3,
                               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -646,10 +647,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             })),
                   ),
                   C.box20,
-                  new TextFormField(
+                  TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: companyDescription,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                         isDense: true, // Added this
                         contentPadding: EdgeInsets.all(15),
                         focusedBorder: OutlineInputBorder(
@@ -659,16 +660,15 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             color: Color(0xFF2821B5),
                           ),
                         ),
-                        border: new OutlineInputBorder(
-                            borderSide:
-                                new BorderSide(color: Colors.grey[200]!)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey[200]!)),
                         labelText: "Description of Company*"),
                   ),
                   box20,
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: gstNo,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                         isDense: true, // Added this
 
                         contentPadding: EdgeInsets.all(15),
@@ -679,16 +679,15 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             color: Color(0xFF2821B5),
                           ),
                         ),
-                        border: new OutlineInputBorder(
-                            borderSide:
-                                new BorderSide(color: Colors.grey[200]!)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey[200]!)),
                         labelText: "GST (Optional)"),
                   ),
                   box20,
-                  new TextFormField(
+                  TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: websiteLink,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                         prefixText: "https:// ",
                         isDense: true, // Added this
                         contentPadding: EdgeInsets.all(15),
@@ -699,9 +698,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             color: Color(0xFF2821B5),
                           ),
                         ),
-                        border: new OutlineInputBorder(
-                            borderSide:
-                                new BorderSide(color: Colors.grey[200]!)),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey[200]!)),
                         labelText: "Website link"),
                   ),
                   SizedBox(
@@ -792,10 +790,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                   ),
                   if (userDetails == false)
                     Column(children: [
-                      new TextFormField(
+                      TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: pointOfContactName,
-                        decoration: new InputDecoration(
+                        decoration: InputDecoration(
                             isDense: true, // Added this
                             contentPadding: EdgeInsets.all(15),
                             focusedBorder: OutlineInputBorder(
@@ -806,16 +804,16 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                 color: Color(0xFF2821B5),
                               ),
                             ),
-                            border: new OutlineInputBorder(
+                            border: OutlineInputBorder(
                                 borderSide:
-                                    new BorderSide(color: Colors.grey[200]!)),
+                                    BorderSide(color: Colors.grey[200]!)),
                             labelText: "Name"),
                       ),
                       box20,
-                      new TextFormField(
+                      TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: pointOfContactNumber,
-                        decoration: new InputDecoration(
+                        decoration: InputDecoration(
                             isDense: true, // Added this
                             contentPadding: EdgeInsets.all(15),
                             focusedBorder: OutlineInputBorder(
@@ -826,9 +824,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                 color: Color(0xFF2821B5),
                               ),
                             ),
-                            border: new OutlineInputBorder(
+                            border: OutlineInputBorder(
                                 borderSide:
-                                    new BorderSide(color: Colors.grey[200]!)),
+                                    BorderSide(color: Colors.grey[200]!)),
                             labelText: "Contact Number"),
                       ),
                     ]),
@@ -891,87 +889,35 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   }
 
   postUserInfoData() async {
-    final response = await dio.post(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/serviceprovidercost',
-        data: {
-          "serviceProviderId": _auth.currentUser!.uid,
-          "mobile": _auth.currentUser!.phoneNumber,
-          "tenantUsecase": "pam",
-          "tenantSet_id": "PAM01",
-          "selfInfo": {
-            "mobile": _auth.currentUser!.phoneNumber,
-            "baseCity": baseCity,
-            "smsOnboarding": widget.data != null ? true : false,
-            "companyName": companyName.text,
-            "address": "${streetAddress.text}, ${area.text}",
-            "area": area.text,
-            "street": streetAddress.text,
-            "gstNo": gstNo.text,
-            "companyDescription": companyDescription.text,
-            "website": websiteLink.text,
-            "contactName": pointOfContactName.text,
-            "contactMobile": pointOfContactNumber.text
-          }
-        });
-    print(response);
-    print(response.statusCode);
-    if (response.statusCode == 200) {
-      setState(() {
-        sendingData = false;
-      });
-      Navigator.push(
-        context,
-        FadeRoute(
-            page: ReviewScreen(
-          done: widget.edit != null ? "done" : null,
-        )),
-      );
-    } else {
-      setState(() {
-        sendingData = false;
-      });
-      displaySnackBar("Error, Please try again later.", context);
-    }
-  }
-
-  postKYCData() async {
-    try {
-      final response = await dio.post(
-          'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?type=packersAndMoversSP',
-          data: {
-            "type": "packersAndMoversSP",
-            "id": _auth.currentUser!.uid,
-            "baseCity": baseCity,
-            "mobile": _auth.currentUser!.phoneNumber,
-            "tenantUsecase": "pam",
-            "tenantSet_id": "PAM01",
-            "companyName": companyName.text,
-            "address": "${streetAddress.text}, ${area.text}",
-            "gstNo": gstNo.text,
-            "companyDescription": companyDescription.text,
-            "website": websiteLink.text,
-            "pointOfContactName": pointOfContactName.text,
-            "pointOfContactNo": pointOfContactNumber.text,
-            "rating": widget.data != null ? widget.data["rating"] : 4,
-            "reviews": widget.data != null ? widget.data["reviews"] : []
-          });
-      print(response);
-      print(response.statusCode);
-      if (response.statusCode == 200) {
-        postUserInfoData();
-      } else {
-        setState(() {
-          sendingData = false;
-        });
-        displaySnackBar("Error, Please try again later.", context);
-      }
-    } catch (e) {
-      print(e);
-      setState(() {
-        sendingData = false;
-      });
-      displaySnackBar("Error, Please try again later.", context);
-    }
+    Map<String, dynamic> data = {
+      "uid": _auth.currentUser!.uid,
+      "mobile": _auth.currentUser!.phoneNumber,
+      "baseCity": baseCity,
+      "smsOnboarding": widget.data != null ? true : false,
+      "companyName": companyName.text,
+      "address": "${streetAddress.text}, ${area.text}",
+      "area": area.text,
+      "street": streetAddress.text,
+      "gstNo": gstNo.text,
+      "companyDescription": companyDescription.text,
+      "website": websiteLink.text,
+      "contactName": pointOfContactName.text,
+      "contactMobile": pointOfContactNumber.text
+    };
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    var database = await firebaseFirestore
+        .collection("accounts")
+        .doc(_auth.currentUser!.uid)
+        .set(data)
+        .onError((error, stackTrace) => print(error));
+    Navigator.push(
+      context,
+      FadeRoute(
+          page: ReviewScreen(
+        done: widget.edit != null ? "done" : null,
+      )),
+    );
+    return database;
   }
 
   getIncorporationCertificate() async {

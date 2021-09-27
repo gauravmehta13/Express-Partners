@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
 
 import 'OnBoarding/mandatory_kyc.dart';
@@ -11,7 +10,6 @@ import 'OnBoarding/onboarding.dart';
 import 'OnBoarding/sms_onboarding.dart';
 import 'Screens/Order/notifications.dart';
 import 'Screens/bottom_navbar.dart';
-import 'Screens/tnc.dart';
 import 'constants.dart';
 import 'noti/importNoti.dart';
 import 'noti/notis/ab/abNoti.dart';
@@ -34,7 +32,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool loading = kIsWeb ? true : false;
   Noti noti = AppNoti();
-  String home = _auth.currentUser == null ? "/join" : "/";
+  // String home = "/join" : "/";
   @override
   void initState() {
     if (kIsWeb) {
@@ -43,24 +41,20 @@ class _MyAppState extends State<MyApp> {
         if (event != null) {
           debugPrint("We have a user now");
           setState(() {
-            home = "/";
+            // home = "/";
           });
           subscription.cancel();
-          setState(() {
-            loading = false;
-          });
+          setState(() {});
           debugPrint(FirebaseAuth.instance.currentUser!.uid);
         } else {
           debugPrint("No user yet..");
           await Future.delayed(const Duration(seconds: 4));
           if (loading) {
             setState(() {
-              home = "/join";
+              // home = "/join";
             });
             subscription.cancel();
-            setState(() {
-              loading = false;
-            });
+            setState(() {});
           }
         }
       });
@@ -77,49 +71,18 @@ class _MyAppState extends State<MyApp> {
             child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Packers And Movers',
+              defaultTransition: Transition.fadeIn,
               theme: themeData(context),
-              getPages: [],
-              initialRoute:
-                  //"/accept-order/1b922164-eb26-44d7-b655-a4207c230c24",
-                  home,
+              getPages: [
+                GetPage(name: "/", page: () => BottomNavScreen()),
+                GetPage(name: "/login", page: () => Onboarding()),
+                GetPage(name: "/onboarding", page: () => MandatoryKYC()),
+                GetPage(name: "/accept-order", page: () => Notifications())
+              ],
+              home: _auth.currentUser == null
+                  ? SMSOnboarding()
+                  : BottomNavScreen(),
             ),
           );
   }
-}
-
-// app_module.dart
-class AppModule extends Module {
-  // Provide a list of dependencies to inject into your project
-  @override
-  final List<Bind> binds = [];
-  @override
-  final List<ModularRoute> routes = [
-    ChildRoute(
-      '/',
-      child: (_, __) => BottomNavScreen(),
-    ),
-    ChildRoute(
-      '/tnc',
-      child: (_, __) => TermsAndConditions(),
-    ),
-    ChildRoute(
-      '/login',
-      child: (_, __) => Onboarding(),
-    ),
-    ChildRoute('/onboarding',
-        child: (_, args) => MandatoryKYC(
-              data: args.data,
-            )),
-    ChildRoute('/join/:id',
-        child: (_, args) => SMSOnboarding(
-              id: args.params['id'],
-            )),
-    ChildRoute('/join', child: (_, args) => SMSOnboarding()),
-    ChildRoute(
-      '/accept-order/:id',
-      child: (_, args) => Notifications(
-        id: args.params['id'],
-      ),
-    ),
-  ];
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "655206981959",
+    "project_id": "expressspackers",
+    "storage_bucket": "expressspackers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655206981959:android:beef7a2f70690f851b2c62",
+        "android_client_info": {
+          "package_name": "com.express_partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655206981959-fo3nomtl1mghp8iklhbhs51o50f2hjei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.express_partner",
+            "certificate_hash": "28a51388e4943781b173d9a2db1649bb3759d213"
+          }
+        },
+        {
+          "client_id": "655206981959-radfd2tvn34i58eaepk62t0gllviv333.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDie6zYhJs68FJCWT70rrtL08tFDHqNpCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655206981959-radfd2tvn34i58eaepk62t0gllviv333.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

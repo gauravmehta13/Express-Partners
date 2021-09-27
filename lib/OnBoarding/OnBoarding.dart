@@ -931,7 +931,7 @@ class _OnboardingState extends State<Onboarding>
                                                             'Cancellation Policy, ',
                                                         style: TextStyle(
                                                             color:
-                                                                C.primaryColor),
+                                                                primaryColor),
                                                         recognizer: new TapGestureRecognizer()
                                                           ..onTap = () => print(
                                                               'Tap Here onTap'),
@@ -941,7 +941,7 @@ class _OnboardingState extends State<Onboarding>
                                                             'User Agreement, ',
                                                         style: TextStyle(
                                                             color:
-                                                                C.primaryColor),
+                                                                primaryColor),
                                                         recognizer: new TapGestureRecognizer()
                                                           ..onTap = () => print(
                                                               'Tap Here onTap'),
@@ -951,7 +951,7 @@ class _OnboardingState extends State<Onboarding>
                                                             'Terms Of Service ',
                                                         style: TextStyle(
                                                             color:
-                                                                C.primaryColor),
+                                                                primaryColor),
                                                         recognizer: new TapGestureRecognizer()
                                                           ..onTap = () => print(
                                                               'Tap Here onTap'),
@@ -966,7 +966,7 @@ class _OnboardingState extends State<Onboarding>
                                                         text: 'Privacy Policy ',
                                                         style: TextStyle(
                                                             color:
-                                                                C.primaryColor),
+                                                                primaryColor),
                                                         recognizer: new TapGestureRecognizer()
                                                           ..onTap = () => print(
                                                               'Tap Here onTap'),

@@ -209,8 +209,8 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                   width: double.infinity,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFf9a825), // background
-                        onPrimary: Colors.black, // foreground
+                        primary: secondaryColor, // background
+                        onPrimary: primaryColor, // foreground
                       ),
                       onPressed: () async {
                         loginPrompt();
@@ -272,7 +272,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                             width: double.maxFinite,
                             padding: const EdgeInsets.all(20.0),
                             decoration: BoxDecoration(
-                              color: C.primaryColor,
+                              color: primaryColor,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(40.0),
                                 bottomRight: Radius.circular(40.0),
@@ -291,7 +291,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                C.box10,
+                                box10,
                                 if (data != null &&
                                     data!["rating"] != null &&
                                     data!["rating"].toString().isNotEmpty)
@@ -326,7 +326,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                             width: double.maxFinite,
                             padding: const EdgeInsets.all(20.0),
                             decoration: BoxDecoration(
-                              color: C.primaryColor,
+                              color: primaryColor,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(40.0),
                                 bottomRight: Radius.circular(40.0),
@@ -356,7 +356,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                C.box10,
+                                box10,
                                 if (data != null &&
                                     data!["rating"] != null &&
                                     data!["rating"].toString().isNotEmpty)
@@ -384,7 +384,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                                       ),
                                     ],
                                   ),
-                                C.box10,
+                                box10,
                                 Text(
                                     "Complete your free registration here and start shipping in less than 5 minutes!",
                                     style: TextStyle(
@@ -394,7 +394,7 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                               ],
                             ),
                           ),
-                    C.box20,
+                    box20,
                     Column(
                       children: [
                         Text("Increase your\nEarnings in 4 easy steps",
@@ -547,8 +547,8 @@ class _SMSOnboardingState extends State<SMSOnboarding> {
                                     imageUrl: partnerData[index]
                                                 ["displayImage"] ==
                                             null
-                                        ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSDu8Wd7NE4H4IsXxko3l1bUucDHv7kl1BTA&usqp=CAU"
-                                        : "https://goflexe-kyc.s3.ap-south-1.amazonaws.com/${partnerData[index]['displayImage']}",
+                                        ? "https://encrypted-tbn0.gstaticom/images?q=tbn:ANd9GcRSDu8Wd7NE4H4IsXxko3l1bUucDHv7kl1BTA&usqp=CAU"
+                                        : "https://goflexe-kys3.ap-south-1.amazonaws.com/${partnerData[index]['displayImage']}",
                                     placeholder: (context, url) => CircleAvatar(
                                       backgroundColor: Colors.grey[300],
                                       child: Icon(
@@ -1503,7 +1503,7 @@ class _FAQState extends State<FAQ> {
                               ),
                             ),
                           ),
-                          C.box20,
+                          box20,
                           filteredFAQ.length == 0
                               ? NoResult()
                               : ListView.builder(
@@ -1606,12 +1606,12 @@ List faq = [
     "faq":
         "Are you going to write something about my buisness/quality on your site apart from just displaying the menu?",
     "ans":
-        "This is where we stand out. Each Seller Partner gets a dedicated page on our website with a vanity URL and would have the following (Some of them are Value Added Services which come at a very nominal price):\n\nVendor Images: Here, we will show our sellers make their unique products, and the efforts being put in by the people behind the enterprise. This is to establish trust in the eyes of the customer and make it look real and authentic.\nVendor Profile: We would also put a short write up about how you started your business, what was your inspiration from etc. This helps the customers connect better with you on an emotional level.\n\nProduct Images: This is our USP. We ensure each product is photographed in an aesthetic manner. This is a welcome change as compared to seeing white background images on other e-commerce platforms."
+        "This is where we stand out. Each Seller Partner gets a dedicated page on our website with a vanity URL and would have the following (Some of them are Value Added Services which come at a very nominal price):\n\nVendor Images: Here, we will show our sellers make their unique products, and the efforts being put in by the people behind the enterprise. This is to establish trust in the eyes of the customer and make it look real and authenti\nVendor Profile: We would also put a short write up about how you started your business, what was your inspiration from et This helps the customers connect better with you on an emotional level.\n\nProduct Images: This is our USP. We ensure each product is photographed in an aesthetic manner. This is a welcome change as compared to seeing white background images on other e-commerce platforms."
   },
   {
     "faq": "What are the promotional activities you do?",
     "ans":
-        "We do both online as well as offline promotions. Online Promotions - Social Media Marketing on sites like Facebook, Instagram, Twitter Offline Promotions - ATL activities in regional and national newspapers, radio channels, magazines etc."
+        "We do both online as well as offline promotions. Online Promotions - Social Media Marketing on sites like Facebook, Instagram, Twitter Offline Promotions - ATL activities in regional and national newspapers, radio channels, magazines et"
   },
   // {"faq": "", "ans": ""},
   // {"faq": "", "ans": ""},

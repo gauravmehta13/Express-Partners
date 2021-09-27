@@ -24,13 +24,13 @@ class Place {
 
 class PlaceSelection extends StatelessWidget {
   final Place _item;
-  PlaceSelection(this._item);
+  const PlaceSelection(this._item, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: _item.isSelected ? Color(0xFF3f51b5) : Colors.transparent,
+        color: _item.isSelected ? primaryColor : Colors.transparent,
         borderRadius: BorderRadius.circular(
           25.0,
         ),
@@ -48,14 +48,16 @@ class PlaceSelection extends StatelessWidget {
 }
 
 class MyOrders extends StatefulWidget {
+  const MyOrders({Key? key}) : super(key: key);
+
   @override
   _MyOrdersState createState() => _MyOrdersState();
 }
 
 class _MyOrdersState extends State<MyOrders> {
-  DateTime today = new DateTime.now();
+  DateTime today = DateTime.now();
   List<Place> place = [];
-  Random random = new Random();
+  Random random = Random();
   List orders = [];
   List filteredOrders = [];
   bool isLoading = false;
@@ -64,9 +66,9 @@ class _MyOrdersState extends State<MyOrders> {
   @override
   void initState() {
     super.initState();
-    place.add(new Place(true, 'All'));
-    place.add(new Place(false, 'Processing'));
-    place.add(new Place(false, 'Delivered'));
+    place.add(Place(true, 'All'));
+    place.add(Place(false, 'Processing'));
+    place.add(Place(false, 'Delivered'));
     fetchOrders();
     logEvent("My_Orders");
   }
@@ -257,14 +259,14 @@ class _MyOrdersState extends State<MyOrders> {
                 25.0,
               ),
             ),
-            child: new GridView.builder(
+            child: GridView.builder(
               padding: EdgeInsets.zero,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, childAspectRatio: 4 / 1),
               shrinkWrap: true,
               itemCount: place.length,
               itemBuilder: (BuildContext context, int index) {
-                return new GestureDetector(
+                return GestureDetector(
                   onTap: () {
                     setState(() {
                       selectedPlace = place[index];
@@ -292,7 +294,7 @@ class _MyOrdersState extends State<MyOrders> {
                       print(place[index].title);
                     });
                   },
-                  child: new PlaceSelection(place[index]),
+                  child: PlaceSelection(place[index]),
                 );
               },
             ),
@@ -324,7 +326,7 @@ class _MyOrdersState extends State<MyOrders> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            var route = new MaterialPageRoute(
+                            var route = MaterialPageRoute(
                                 builder: (BuildContext context) => OrderDetails(
                                       details: filteredOrders[index],
                                     ));
@@ -363,7 +365,7 @@ class _MyOrdersState extends State<MyOrders> {
                                             filteredOrders[index]["data"]
                                                         ["orderDate"] !=
                                                     null
-                                                ? new DateFormat("EEE, d MMMM")
+                                                ? DateFormat("EEE, d MMMM")
                                                     .format(DateTime.parse(
                                                         filteredOrders[index]
                                                                 ["data"]
@@ -545,14 +547,14 @@ class _MyOrdersState extends State<MyOrders> {
                                                                                 TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                                                                           ),
                                                                           C.box10,
-                                                                          new TextFormField(
+                                                                          TextFormField(
                                                                             onChanged:
                                                                                 (val) {
                                                                               setState(() {
                                                                                 filteredOrders[index]["trackingData"]["driverName"] = val;
                                                                               });
                                                                             },
-                                                                            decoration: new InputDecoration(
+                                                                            decoration: InputDecoration(
                                                                                 isDense: true, // Added this
                                                                                 contentPadding: EdgeInsets.all(15),
                                                                                 focusedBorder: OutlineInputBorder(
@@ -562,14 +564,14 @@ class _MyOrdersState extends State<MyOrders> {
                                                                                     color: Color(0xFF2821B5),
                                                                                   ),
                                                                                 ),
-                                                                                border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey[200]!)),
+                                                                                border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey[200]!)),
                                                                                 labelText: "Driver Name"),
                                                                           ),
                                                                           SizedBox(
                                                                             height:
                                                                                 20,
                                                                           ),
-                                                                          new TextFormField(
+                                                                          TextFormField(
                                                                             onChanged:
                                                                                 (val) {
                                                                               setState(() {
@@ -578,7 +580,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                             },
                                                                             keyboardType:
                                                                                 TextInputType.number,
-                                                                            decoration: new InputDecoration(
+                                                                            decoration: InputDecoration(
                                                                                 isDense: true, // Added this
                                                                                 contentPadding: EdgeInsets.all(15),
                                                                                 focusedBorder: OutlineInputBorder(
@@ -588,7 +590,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                                     color: Color(0xFF2821B5),
                                                                                   ),
                                                                                 ),
-                                                                                border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey[200]!)),
+                                                                                border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey[200]!)),
                                                                                 labelText: "Driver Number"),
                                                                           ),
                                                                           SizedBox(
@@ -599,7 +601,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                             children: [
                                                                               Expanded(
                                                                                 child: DateTimePicker(
-                                                                                  decoration: new InputDecoration(
+                                                                                  decoration: InputDecoration(
                                                                                     errorStyle: TextStyle(fontSize: 10),
                                                                                     prefixIcon: Icon(Icons.calendar_today),
                                                                                     isDense: true, // Added this
@@ -611,7 +613,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                                         color: Color(0xFF2821B5),
                                                                                       ),
                                                                                     ),
-                                                                                    border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey)),
+                                                                                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
                                                                                     labelText: 'Pickup Date',
                                                                                   ),
                                                                                   style: TextStyle(fontSize: 14),
@@ -639,7 +641,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                               Expanded(
                                                                                 child: DateTimePicker(
                                                                                   style: TextStyle(fontSize: 14),
-                                                                                  decoration: new InputDecoration(
+                                                                                  decoration: InputDecoration(
                                                                                     // errorText:
                                                                                     //     dropDateValidator,
                                                                                     errorStyle: TextStyle(fontSize: 10),
@@ -653,7 +655,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                                         color: Color(0xFF2821B5),
                                                                                       ),
                                                                                     ),
-                                                                                    border: new OutlineInputBorder(borderSide: new BorderSide(color: Colors.grey)),
+                                                                                    border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
                                                                                     labelText: 'Drop Date',
                                                                                   ),
                                                                                   initialDate: today.add(Duration(
@@ -712,7 +714,7 @@ class _MyOrdersState extends State<MyOrders> {
                                                                       18.0),
                                                         ),
                                                         onPressed: () {
-                                                          var route = new MaterialPageRoute(
+                                                          var route = MaterialPageRoute(
                                                               builder: (BuildContext
                                                                       context) =>
                                                                   FlutterMap(

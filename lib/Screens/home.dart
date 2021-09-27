@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
         child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-              color: C.primaryColor,
+              color: primaryColor,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40.0),
                 bottomRight: Radius.circular(40.0),
@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
           gradient: LinearGradient(
             colors: [
               Color(0xFFb2b9e1),
-              C.primaryColor,
+              primaryColor,
             ],
           ),
           borderRadius: BorderRadius.circular(20.0),
