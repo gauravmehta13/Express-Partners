@@ -131,7 +131,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                   },
             child: sendingData == true || uploadingImages == true
                 ? Column(
-                    children: [
+                    children: const [
                       Text(""),
                       Center(
                         child: LinearProgressIndicator(
@@ -341,57 +341,60 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               pickupSearchResults!.length != 0)
                             getSuggestions(pickupSearchResults!, "Pickup"),
                           box20,
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Required';
-                                    }
-                                    return null;
-                                  },
-                                  controller: pickupCity,
-                                  scrollPadding:
-                                      const EdgeInsets.only(bottom: 150.0),
-                                  decoration:
-                                      textfieldDecoration("Town / City", ""),
-                                  textInputAction: TextInputAction.next,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Required';
-                                    }
-                                    return null;
-                                  },
-                                  controller: pickupState,
-                                  scrollPadding:
-                                      const EdgeInsets.only(bottom: 150.0),
-                                  decoration: textfieldDecoration("State", ""),
-                                  textInputAction: TextInputAction.next,
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
-                      box20,
+                      MultiSelectBottomSheetField(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.circular(5)),
+                        initialChildSize: 0.5,
+                        listType: MultiSelectListType.CHIP,
+                        searchable: true,
+                        initialValue: baseCity,
+                        buttonText: Text(
+                          "Select Serving Cities",
+                          style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        title: Text("Cities where your business is located"),
+                        items: _items as List<MultiSelectItem>,
+                        onSelectionChanged: (values) {
+                          setState(() {
+                            baseCity = values;
+                            baseLocation = values;
+                          });
+                        },
+                        onConfirm: (values) {
+                          setState(() {
+                            baseCity = values;
+                            baseLocation = values;
+                          });
+                        },
+                        chipDisplay: MultiSelectChipDisplay(
+                          onTap: (dynamic value) {
+                            setState(() {
+                              baseCity.remove(value);
+                              baseLocation!.remove(value);
+                            });
+                          },
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select base cities';
+                          }
+                          return null;
+                        },
+                      ),
                       TextButton(
                           onPressed: () {
                             showCatalog();
                           },
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.add,
                                 color: Color(0xFF3f51b5),
@@ -409,12 +412,12 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                           )),
                       Container(
                           width: double.maxFinite,
-                          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                           decoration: BoxDecoration(
                             color: Color(0xFFc1f0dc),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Building your own catalog will help you target more customers",
                               textAlign: TextAlign.center,
@@ -434,7 +437,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             return Container(
                               height: 100,
                               width: MediaQuery.of(context).size.width / 3,
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Image.network(
                                 "https://goflexe-kyc.s3.ap-south-1.amazonaws.com/${otherImagesLink[index]}",
                                 fit: BoxFit.fill,
