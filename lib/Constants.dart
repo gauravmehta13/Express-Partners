@@ -10,14 +10,23 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 List<dynamic> cities = [
-  "Bangalore",
-  "Hyderabad",
-  "Chennai",
-  "Pune",
   "Mumbai",
-  "NCR",
-  "Dehradun",
-  "Amritsar"
+  "Delhi",
+  "Ahmedabad",
+  "Chennai",
+  "Kolkata",
+  "Surat",
+  "Pune",
+  "Jaipur",
+  "Lucknow",
+  "Kanpur",
+  "Nagpur",
+  "Bhopal",
+  "Indore",
+  "Thane",
+  "Visakhapatnam",
+  "Patna",
+  "Vadodara",
 ];
 
 List<dynamic> mapByKey(String keyName, List<dynamic> input) {

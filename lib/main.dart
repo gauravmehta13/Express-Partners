@@ -31,7 +31,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool loading = kIsWeb ? true : false;
   Noti noti = AppNoti();
-  // String home = "/join" : "/";
   @override
   void initState() {
     if (kIsWeb) {
@@ -74,7 +73,7 @@ class _MyAppState extends State<MyApp> {
             getPages: [
               GetPage(name: "/", page: () => BottomNavScreen()),
               GetPage(name: "/login", page: () => Onboarding()),
-              GetPage(name: "/onboarding", page: () => MandatoryKYC()),
+              GetPage(name: "/onboarding", page: () => const MandatoryKYC()),
               GetPage(name: "/accept-order", page: () => Notifications())
             ],
             home:

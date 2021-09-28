@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:mime/mime.dart';
 
 import '../../Widgets/stepper.dart';
 import '../../constants.dart';
@@ -19,7 +17,7 @@ class _TrackingState extends State<Tracking> {
   bool driverLoading = false;
   var driverName = new TextEditingController();
   var driverNo = new TextEditingController();
-  late PlatformFile image;
+
   String? imageLink;
   List? trackingDetails = [];
   List<FAStep> trackingSteps = [];
@@ -332,85 +330,7 @@ class _TrackingState extends State<Tracking> {
     return details;
   }
 
-  getImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      withReadStream: true,
-      allowedExtensions: ["jpg"],
-      type: FileType.custom,
-    );
-    if (result != null) {
-      setState(() {
-        image = result.files.single;
-      });
-      uploadImage();
-    } else {
-      // User canceled the picker
-    }
-  }
-
-  uploadImage() async {
-    setState(() {
-      isLoading = true;
-    });
-    final mimeType = lookupMimeType(image.name);
-    await dio.post(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/document?type=pamDeliveryItems',
-        data: {
-          "contentType": mimeType,
-          "metaData": {
-            "contentType": mimeType,
-          },
-        }).then((response) async {
-      print(response);
-      Map<String, dynamic> map = json.decode(response.toString());
-      setState(() {
-        imageLink = map['key'];
-      });
-      print(imageLink);
-      print(mimeType);
-
-      dio.put(
-        map['s3PutObjectUrl'],
-        data: image.readStream,
-        options: Options(
-          contentType: mimeType,
-          headers: {
-            "Content-Length": image.size,
-          },
-        ),
-        onSendProgress: (int sentBytes, int totalBytes) {
-          double progressPercent = sentBytes / totalBytes * 100;
-          print("$progressPercent %");
-        },
-      ).then((response) async {
-        print(response);
-        print(response.statusCode);
-        var taskName =
-            await getCurrentTask(widget.data["trackingData"]["stages"]);
-        print(taskName);
-        var data = await getTrackingIds(widget.data["trackingData"], taskName);
-        var url =
-            "https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/tracking?type=updateCustomFields";
-        dio.patch(
-          url,
-          data: {
-            "trackingId": data["trackingId"],
-            "stageId": data["stageId"],
-            "taskId": data["taskId"],
-            "custom": {
-              "data": {"image": imageLink.toString()},
-            },
-          },
-        ).then((value) => changeTask());
-        print(response);
-      }).catchError((error) {
-        print(error);
-        setState(() {
-          isLoading = false;
-        });
-      });
-    });
-  }
+  getImage() async {}
 
   Future<dynamic> editDriverSheet() {
     return showModalBottomSheet(

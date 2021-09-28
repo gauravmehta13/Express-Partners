@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +17,8 @@ import '../fade_route.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class MandatoryKYC extends StatefulWidget {
-  final edit;
-  final data;
+  final bool? edit;
+  final bool? data;
   const MandatoryKYC({Key? key, this.edit, this.data}) : super(key: key);
   @override
   _MandatoryKYCState createState() => _MandatoryKYCState();
@@ -36,40 +35,26 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   late LocationData _locationData;
   var dio = Dio();
 
-  var pickupArea = TextEditingController();
-  var pickupPin = TextEditingController();
-  var pickupCity = TextEditingController();
-  var pickupState = TextEditingController();
-  var pickupStreetAddress = TextEditingController();
-  List<dynamic>? pickupSearchResults;
-  List<dynamic>? pickupPinResults;
+  var pin = TextEditingController();
+  var city = TextEditingController();
+  var state = TextEditingController();
+  var address = TextEditingController();
+  List<dynamic>? searchResults;
+  List<dynamic>? pinResults;
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool loading = true;
+  bool loading = false;
   bool sendingData = false;
   bool kycCompleted = false;
-  bool? userDetails = true;
+
   final formKey = GlobalKey<FormState>();
-
   var companyName = TextEditingController();
-
-  var gstNo = TextEditingController();
   var companyDescription = TextEditingController();
-  var websiteLink = TextEditingController();
-  var pointOfContactName = TextEditingController();
-  var pointOfContactNumber = TextEditingController();
+
   List baseCity = [];
 
-  PlatformFile? displayImage;
-  String? displayImageLink;
-  PlatformFile? incorporationCertificate;
-  String? incorporationCertificateLink;
-  List<PlatformFile>? otherImages = [];
   List<String?> otherImagesLink = [];
   bool uploadingImages = false;
-  bool tappedOnCatalog = false;
-
-  var pickupAddress = TextEditingController();
 
   List _items = [];
 
@@ -169,15 +154,15 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                     children: [
                       SizedBox(
                           height: 60, child: Image.asset("assets/kyc.png")),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         "Verify Your Identity   ",
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 20),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Container(
@@ -187,7 +172,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             color: Color(0xFFc1f0dc),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "85% customers prefer to select a service provider with a complete profile.",
                               textAlign: TextAlign.center,
@@ -197,17 +182,18 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               ),
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: companyName,
                         decoration: InputDecoration(
-                            prefixIcon: Icon(FontAwesomeIcons.addressCard),
+                            prefixIcon:
+                                const Icon(FontAwesomeIcons.addressCard),
                             isDense: true, // Added this
-                            contentPadding: EdgeInsets.all(15),
-                            focusedBorder: OutlineInputBorder(
+                            contentPadding: const EdgeInsets.all(15),
+                            focusedBorder: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4)),
                               borderSide: BorderSide(
@@ -261,10 +247,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                     }
                                     return null;
                                   },
-                                  controller: pickupPin,
-                                  onChanged: (pin) async {
-                                    var pickupPin = int.tryParse(pin);
-                                    int? count = 0, temp = pickupPin;
+                                  controller: pin,
+                                  onChanged: (p) async {
+                                    var tpin = int.tryParse(p);
+                                    int? count = 0, temp = tpin;
                                     while (temp! > 0) {
                                       count = count! + 1;
                                       temp = (temp / 10).floor();
@@ -275,7 +261,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                       setState(() {
                                         gettingPin = true;
                                       });
-                                      searchPickupPin(pin);
+                                      searchpin(p);
                                     }
                                   },
                                   scrollPadding:
@@ -323,7 +309,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                   },
                                   scrollPadding:
                                       const EdgeInsets.only(bottom: 150.0),
-                                  controller: pickupAddress,
+                                  controller: address,
                                   onChanged: (value) {
                                     searchPickup(value);
                                   },
@@ -334,12 +320,11 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               ),
                             ],
                           ),
-                          if (pickupPinResults != null &&
-                              pickupPinResults!.length != 0)
-                            getSuggestions(pickupPinResults!, "Pickup"),
-                          if (pickupSearchResults != null &&
-                              pickupSearchResults!.length != 0)
-                            getSuggestions(pickupSearchResults!, "Pickup"),
+                          if (pinResults != null && pinResults!.length != 0)
+                            getSuggestions(pinResults!, "Pickup"),
+                          if (searchResults != null &&
+                              searchResults!.length != 0)
+                            getSuggestions(searchResults!, "Pickup"),
                           box20,
                         ],
                       ),
@@ -389,45 +374,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                           return null;
                         },
                       ),
-                      TextButton(
-                          onPressed: () {
-                            showCatalog();
-                          },
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.add,
-                                color: Color(0xFF3f51b5),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Build your own catalog",
-                                style: TextStyle(
-                                  color: Color(0xFF3f51b5),
-                                ),
-                              ),
-                            ],
-                          )),
-                      Container(
-                          width: double.maxFinite,
-                          padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-                          decoration: BoxDecoration(
-                            color: Color(0xFFc1f0dc),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "Building your own catalog will help you target more customers",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF2f7769),
-                                fontSize: 12,
-                              ),
-                            ),
-                          )),
-                      box20,
                       Container(
                         height: 100,
                         child: ListView.builder(
@@ -457,206 +403,13 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
     );
   }
 
-  showCatalog() {
-    setState(() {
-      tappedOnCatalog = true;
-    });
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        context: context,
-        builder: (BuildContext context) {
-          return StatefulBuilder(builder: (context, setState) {
-            return Container(
-              height: MediaQuery.of(context).size.height - 200,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
-                // mainAxisSize: MainAxisSize.min,
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 50,
-                    width: MediaQuery.of(context).size.width,
-                    child: Align(
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                            icon: Icon(Icons.close),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            })),
-                  ),
-                  C.box20,
-                  box20,
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: gstNo,
-                    decoration: InputDecoration(
-                        isDense: true, // Added this
-
-                        contentPadding: EdgeInsets.all(15),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          borderSide: BorderSide(
-                            width: 1,
-                            color: Color(0xFF2821B5),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey[200]!)),
-                        labelText: "GST (Optional)"),
-                  ),
-                  box20,
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: websiteLink,
-                    decoration: InputDecoration(
-                        prefixText: "https:// ",
-                        isDense: true, // Added this
-                        contentPadding: EdgeInsets.all(15),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          borderSide: BorderSide(
-                            width: 1,
-                            color: Color(0xFF2821B5),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey[200]!)),
-                        labelText: "Website link"),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
-                      Text("Other images showing business :"),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      otherImages!.length != 0
-                          ? GestureDetector(
-                              onTap: () async {
-                                setState(() {
-                                  otherImages = otherImages;
-                                });
-                              },
-                              child: Icon(Icons.done))
-                          : RawMaterialButton(
-                              onPressed: () async {
-                                setState(() {
-                                  otherImages = otherImages;
-                                });
-                              },
-                              elevation: 0,
-                              fillColor: Color(0xFFf9a825),
-                              child: Icon(
-                                FontAwesomeIcons.camera,
-                                size: 20.0,
-                              ),
-                              padding: EdgeInsets.all(10.0),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CheckboxListTile(
-                    contentPadding: EdgeInsets.all(0),
-                    dense: true,
-                    title: const Text(
-                      'Are you the point of contact for customer orders?',
-                      style: TextStyle(fontSize: 12),
-                    ),
-                    autofocus: false,
-                    activeColor: Color(0xFF3f51b5),
-                    checkColor: Colors.white,
-                    selected: userDetails!,
-                    value: userDetails,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        userDetails = value;
-                      });
-                    },
-                  ),
-                  if (userDetails == false)
-                    Column(children: [
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: pointOfContactName,
-                        decoration: InputDecoration(
-                            isDense: true, // Added this
-                            contentPadding: EdgeInsets.all(15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              borderSide: BorderSide(
-                                width: 1,
-                                color: Color(0xFF2821B5),
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey[200]!)),
-                            labelText: "Name"),
-                      ),
-                      box20,
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: pointOfContactNumber,
-                        decoration: InputDecoration(
-                            isDense: true, // Added this
-                            contentPadding: EdgeInsets.all(15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
-                              borderSide: BorderSide(
-                                width: 1,
-                                color: Color(0xFF2821B5),
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey[200]!)),
-                            labelText: "Contact Number"),
-                      ),
-                    ]),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'OKAY',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF3f51b5)),
-                      ),
-                    ),
-                  ),
-                  Spacer()
-                ],
-              ),
-            );
-          });
-        });
-  }
-
   postUserInfoData() async {
     Map<String, dynamic> data = {
       "uid": _auth.currentUser!.uid,
       "mobile": _auth.currentUser!.phoneNumber,
-      "baseCity": baseCity,
-      "smsOnboarding": widget.data != null ? true : false,
-      "companyName": companyName.text,
-      "gstNo": gstNo.text,
-      "companyDescription": companyDescription.text,
-      "website": websiteLink.text,
-      "contactName": pointOfContactName.text,
-      "contactMobile": pointOfContactNumber.text
+      "cities": baseCity,
+      "businessName": companyName.text,
+      "about": companyDescription.text,
     };
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var database = await firebaseFirestore
@@ -699,17 +452,17 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                     FocusScope.of(context).unfocus();
 
                     setState(() {
-                      pickupAddress.text = suggestions[index]["Name"];
-                      pickupPin.text = suggestions[index]["Pincode"];
-                      pickupCity.text = suggestions[index]["Division"];
-                      pickupState.text = suggestions[index]["State"];
+                      address.text = suggestions[index]["Name"];
+                      pin.text = suggestions[index]["Pincode"];
+                      city.text = suggestions[index]["Division"];
+                      state.text = suggestions[index]["State"];
                     });
 
                     print(suggestions[index]);
                     setState(() {
                       suggestions = [];
-                      pickupPinResults = null;
-                      pickupSearchResults = null;
+                      pinResults = null;
+                      searchResults = null;
                     });
                   }),
             );
@@ -774,10 +527,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
           "https://nominatim.openstreetmap.org/reverse?format=json&lat=$lat&lon=$lon");
       print(resp.data);
       setState(() {
-        pickupAddress.text = resp.data["address"]["county"];
-        pickupPin.text = resp.data["address"]["postcode"];
-        pickupCity.text = resp.data["address"]["state_district"];
-        pickupState.text = resp.data["address"]["state"];
+        address.text = resp.data["address"]["county"];
+        pin.text = resp.data["address"]["postcode"];
+        city.text = resp.data["address"]["state_district"];
+        state.text = resp.data["address"]["state"];
         gettingAddress = false;
       });
     } catch (e) {
@@ -807,20 +560,20 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   }
 
   searchPickup(String searchTerm) async {
-    pickupSearchResults = await getAreaData(searchTerm);
+    searchResults = await getAreaData(searchTerm);
     setState(() {
-      pickupSearchResults = pickupSearchResults;
+      searchResults = searchResults;
     });
-    print(pickupSearchResults);
+    print(searchResults);
   }
 
-  searchPickupPin(String pin) async {
-    pickupPinResults = await getPinData(pin);
+  searchpin(String pin) async {
+    pinResults = await getPinData(pin);
     setState(() {
-      pickupPinResults = pickupPinResults;
+      pinResults = pinResults;
       gettingPin = false;
     });
-    print(pickupPinResults);
+    print(pinResults);
   }
 }
 

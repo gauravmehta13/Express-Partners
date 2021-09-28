@@ -204,7 +204,7 @@ class _ReviewScreenState extends State<ReviewScreen>
                     context,
                     FadeRoute(
                         page: MandatoryKYC(
-                      edit: "edit",
+                      edit: true,
                     )),
                   );
                 } else {
