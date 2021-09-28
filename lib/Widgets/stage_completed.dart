@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class StageCompleted extends StatelessWidget {
-  final tilte;
-  final subtitle;
-  StageCompleted({required this.subtitle, required this.tilte});
+  final String tilte;
+  final String subtitle;
+  const StageCompleted({Key? key, required this.subtitle, required this.tilte})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
-          Container(
+          SizedBox(
               height: 50, width: 50, child: Image.asset("assets/checked.png")),
           SizedBox(
             height: 30,

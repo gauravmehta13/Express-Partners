@@ -11,7 +11,7 @@ class MyAppBar extends StatelessWidget {
     return AppBar(
       elevation: 1,
       title: Text(
-        title ?? "GoFlexe",
+        title ?? "Express",
         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       ),
       bottom: PreferredSize(

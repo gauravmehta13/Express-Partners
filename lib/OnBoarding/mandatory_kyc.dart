@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
@@ -57,6 +63,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   bool uploadingImages = false;
 
   List _items = [];
+  String? imageUrl;
 
   @override
   void initState() {
@@ -152,11 +159,47 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                          height: 60, child: Image.asset("assets/kyc.png")),
-                      const SizedBox(
-                        height: 10,
+                      GestureDetector(
+                        onTap: () async {
+                          setState(() {
+                            uploadingImages = true;
+                          });
+                          imageUrl =
+                              await uploadImage(folderName: "profilePhotos");
+                          setState(() {
+                            uploadingImages = false;
+                          });
+                        },
+                        child: Stack(
+                          children: [
+                            imageUrl != null
+                                ? CircleAvatar(
+                                    radius: 40,
+                                    backgroundColor: Colors.grey[300],
+                                    backgroundImage: NetworkImage(
+                                      imageUrl ?? "",
+                                    ))
+                                : CircleAvatar(
+                                    radius: 40,
+                                    backgroundColor: Colors.grey[300],
+                                    child: Image.asset("assets/kyc.png"),
+                                  ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: CircleAvatar(
+                                  backgroundColor: primaryColor,
+                                  radius: 20,
+                                  child: Icon(
+                                    FontAwesomeIcons.camera,
+                                    color: Colors.white,
+                                    size: 16,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
+                      box20,
                       const Text(
                         "Verify Your Identity   ",
                         style: TextStyle(
@@ -374,6 +417,18 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                           return null;
                         },
                       ),
+                      ElevatedButton(
+                          onPressed: () async {
+                            setState(() {
+                              uploadingImages = true;
+                            });
+                            setState(() async {
+                              otherImagesLink = await uploadMultiImages(
+                                  folderName: "OtherPhotos");
+                              uploadingImages = false;
+                            });
+                          },
+                          child: Text("data")),
                       Container(
                         height: 100,
                         child: ListView.builder(
@@ -386,7 +441,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Image.network(
-                                "https://goflexe-kyc.s3.ap-south-1.amazonaws.com/${otherImagesLink[index]}",
+                                otherImagesLink[index] ?? "",
                                 fit: BoxFit.fill,
                               ),
                               alignment: Alignment.center,
@@ -410,6 +465,12 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
       "cities": baseCity,
       "businessName": companyName.text,
       "about": companyDescription.text,
+      "pin": pin.text,
+      "area": address.text,
+      "city": city.text,
+      "state": state.text,
+      "imgUrl": imageUrl,
+      "otherImages": otherImagesLink
     };
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var database = await firebaseFirestore
@@ -592,4 +653,41 @@ textfieldDecoration(label, hint) {
       border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
       labelText: label,
       hintText: hint);
+}
+
+Future<List<String>> uploadMultiImages({String folderName = ""}) async {
+  try {
+    List<XFile>? images = await ImagePicker().pickMultiImage();
+    List<String> imageUrls = [];
+
+    if (images == null) {
+      return [];
+    }
+    images.forEach((image) async {
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child(folderName)
+          .child(DateTime.now().millisecondsSinceEpoch.toString());
+      UploadTask uploadTask;
+
+      final metadata = SettableMetadata(
+          contentType: 'image/jpeg',
+          customMetadata: {'picked-file-path': image.path});
+
+      if (kIsWeb) {
+        uploadTask = ref.putData(await image.readAsBytes(), metadata);
+      } else {
+        uploadTask = ref.putFile(File(image.path));
+      }
+
+      TaskSnapshot storageTaskSnapshot = await uploadTask;
+
+      String downloadUrl = await storageTaskSnapshot.ref.getDownloadURL();
+      imageUrls.add(downloadUrl);
+    });
+    return imageUrls;
+  } catch (e) {
+    Get.snackbar("Error", e.toString());
+    return [];
+  }
 }

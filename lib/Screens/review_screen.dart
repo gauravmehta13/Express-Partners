@@ -53,11 +53,11 @@ class _ReviewScreenState extends State<ReviewScreen>
   bool loading = true;
   bool sendingData = false;
   ///////////////////////////////////
-  TextEditingController websiteController = new TextEditingController();
+  TextEditingController websiteController = TextEditingController();
   var websiteNode = FocusNode();
-  TextEditingController aboutController = new TextEditingController();
+  TextEditingController aboutController = TextEditingController();
   var aboutNode = FocusNode();
-  TextEditingController contactController = new TextEditingController();
+  TextEditingController contactController = TextEditingController();
   var contactNode = FocusNode();
   List? servingCities = [];
 

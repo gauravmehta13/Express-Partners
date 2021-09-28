@@ -1,11 +1,16 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
@@ -27,6 +32,25 @@ List<dynamic> cities = [
   "Visakhapatnam",
   "Patna",
   "Vadodara",
+  "Ghaziabad",
+  "Ludhiana",
+  "Agra",
+  "Nashik",
+  "Faridabad",
+  "Meerut",
+  "Rajkot",
+  "Kalyan & Dombivali",
+  "Vasai Virar",
+  "Varanasi",
+  "Srinagar",
+  "Aurangabad",
+  "Dhanbad",
+  "Amritsar",
+  "Navi Mumbai",
+  "Allahabad",
+  "Ranchi",
+  "Haora",
+  "Coimbatore"
 ];
 
 List<dynamic> mapByKey(String keyName, List<dynamic> input) {
@@ -123,6 +147,41 @@ displaySnackBar(text, ctx) {
       duration: const Duration(seconds: 2),
     ),
   );
+}
+
+Future<String> uploadImage({String folderName = ""}) async {
+  try {
+    XFile? image = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (image == null) {
+      return "";
+    }
+
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child(folderName)
+        .child(DateTime.now().millisecondsSinceEpoch.toString());
+    UploadTask uploadTask;
+
+    final metadata = SettableMetadata(
+        contentType: 'image/jpeg',
+        customMetadata: {'picked-file-path': image.path});
+
+    if (kIsWeb) {
+      uploadTask = ref.putData(await image.readAsBytes(), metadata);
+    } else {
+      uploadTask = ref.putFile(File(image.path));
+    }
+
+    TaskSnapshot storageTaskSnapshot = await uploadTask;
+
+    String downloadUrl = await storageTaskSnapshot.ref.getDownloadURL();
+    return downloadUrl;
+  } catch (e) {
+    Get.snackbar("Error", e.toString());
+    return "";
+  }
 }
 
 launchWhatsApp() async {
