@@ -27,10 +27,11 @@ class AllPrices extends StatefulWidget {
 class _AllPricesState extends State<AllPrices> {
   String title = 'Stepper (Custom)';
   int _currentStep = 0;
-  FAStepperType _stepperType = FAStepperType.horizontal;
+  final FAStepperType _stepperType = FAStepperType.horizontal;
   bool loading = true;
   var dio = Dio();
 
+  @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((_) async {
@@ -53,7 +54,7 @@ class _AllPricesState extends State<AllPrices> {
         }
       });
       print(map);
-      Future.delayed(Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 500), () {
         setState(() {
           loading = false;
         });
@@ -80,10 +81,10 @@ class _AllPricesState extends State<AllPrices> {
     return WillPopScope(
       onWillPop: () {
         setState(() {
-          if (this._currentStep > 0) {
-            this._currentStep = this._currentStep - 1;
+          if (_currentStep > 0) {
+            _currentStep = _currentStep - 1;
           } else {
-            this._currentStep = 0;
+            _currentStep = 0;
             Navigator.pop(context);
           }
         });
@@ -105,18 +106,18 @@ class _AllPricesState extends State<AllPrices> {
               leading: InkWell(
                   onTap: () {
                     setState(() {
-                      if (this._currentStep > 0) {
-                        this._currentStep = this._currentStep - 1;
+                      if (_currentStep > 0) {
+                        _currentStep = _currentStep - 1;
                       } else {
-                        this._currentStep = 0;
+                        _currentStep = 0;
                         Navigator.pop(context);
                       }
                     });
                   },
                   child: Icon(Icons.arrow_back)),
               automaticallyImplyLeading: false,
-              title: Text(
-                "GoFlexe",
+              title: const Text(
+                "Express",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               bottom: PreferredSize(
@@ -143,19 +144,19 @@ class _AllPricesState extends State<AllPrices> {
                 // titleIconArrange: FAStepperTitleIconArrange.column,
                 physics: ClampingScrollPhysics(),
                 type: _stepperType,
-                currentStep: this._currentStep,
+                currentStep: _currentStep,
                 onStepTapped: widget.old != null
                     ? (step) {
                         setState(() {
-                          this._currentStep = step;
+                          _currentStep = step;
                         });
                         print('onStepTapped :' + step.toString());
                       }
                     : null,
                 onStepContinue: () {
                   setState(() {
-                    if (this._currentStep < 4 - 1) {
-                      this._currentStep = this._currentStep + 1;
+                    if (_currentStep < 4 - 1) {
+                      _currentStep = _currentStep + 1;
                     } else {
                       _currentStep = 0;
                     }
@@ -164,10 +165,10 @@ class _AllPricesState extends State<AllPrices> {
                 },
                 onStepCancel: () {
                   setState(() {
-                    if (this._currentStep > 0) {
-                      this._currentStep = this._currentStep - 1;
+                    if (_currentStep > 0) {
+                      _currentStep = _currentStep - 1;
                     } else {
-                      this._currentStep = 0;
+                      _currentStep = 0;
                     }
                   });
                   print('onStepCancel :' + _currentStep.toString());
