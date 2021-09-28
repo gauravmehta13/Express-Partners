@@ -2,16 +2,13 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:feature_discovery/feature_discovery.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:location/location.dart' as loc;
-import 'package:mime/mime.dart';
-import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
+import 'package:location/location.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import '../Screens/review_screen.dart';
@@ -19,44 +16,51 @@ import '../Widgets/loading.dart';
 import '../appbar.dart';
 import '../constants.dart';
 import '../fade_route.dart';
-import '../model/place_search.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class MandatoryKYC extends StatefulWidget {
   final edit;
   final data;
-  MandatoryKYC({this.edit, this.data});
+  const MandatoryKYC({Key? key, this.edit, this.data}) : super(key: key);
   @override
   _MandatoryKYCState createState() => _MandatoryKYCState();
 }
 
 class _MandatoryKYCState extends State<MandatoryKYC> {
-  loc.Location location = loc.Location();
-  String? lat;
-  String? lng;
+  bool gettingPin = false;
+  bool gettingAddress = false;
+  Location location = Location();
+  double? latitude;
+  double? longitude;
   late bool _serviceEnabled;
-  loc.PermissionStatus? _permissionGranted;
-  late loc.LocationData _locationData;
+  PermissionStatus? _permissionGranted;
+  late LocationData _locationData;
   var dio = Dio();
+
+  var pickupArea = TextEditingController();
+  var pickupPin = TextEditingController();
+  var pickupCity = TextEditingController();
+  var pickupState = TextEditingController();
+  var pickupStreetAddress = TextEditingController();
+  List<dynamic>? pickupSearchResults;
+  List<dynamic>? pickupPinResults;
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool loading = true;
   bool sendingData = false;
   bool kycCompleted = false;
   bool? userDetails = true;
-  List<PlaceSearch>? pickupSearchResults;
   final formKey = GlobalKey<FormState>();
-  var area = TextEditingController();
+
   var companyName = TextEditingController();
-  var streetAddress = TextEditingController();
+
   var gstNo = TextEditingController();
   var companyDescription = TextEditingController();
   var websiteLink = TextEditingController();
   var pointOfContactName = TextEditingController();
   var pointOfContactNumber = TextEditingController();
   List baseCity = [];
-
-  GlobalKey<EnsureVisibleState>? ensureKey;
 
   PlatformFile? displayImage;
   String? displayImageLink;
@@ -66,6 +70,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   List<String?> otherImagesLink = [];
   bool uploadingImages = false;
   bool tappedOnCatalog = false;
+
+  var pickupAddress = new TextEditingController();
 
   List _items = [];
 
@@ -79,7 +85,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
               i,
             ))
         .toList();
-    ensureKey = GlobalKey<EnsureVisibleState>();
+
     getProgress();
     if (widget.data != null) {
       prefillData();
@@ -89,7 +95,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
 
   prefillData() {
     companyName.text = widget.data["Business Name"];
-    streetAddress.text = widget.data["Address"];
   }
 
   getKycData() async {
@@ -117,8 +122,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
           setState(() {
             companyName.text = info["companyName"];
             companyDescription.text = info["companyDescription"];
-            area.text = info["area"];
-            streetAddress.text = info["street"];
+
             gstNo.text = info["gstNo"];
             websiteLink.text = info["website"];
             loading = false;
@@ -153,8 +157,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
             currentFocus.unfocus();
           }
         },
-        backgroundColor: Color(0xFF25D366),
-        child: FaIcon(FontAwesomeIcons.whatsapp),
+        backgroundColor: const Color(0xFF25D366),
+        child: const FaIcon(FontAwesomeIcons.whatsapp),
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -176,18 +180,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                         currentFocus.unfocus();
                       }
 
-                      // if (!tappedOnCatalog) {
-                      //   // FeatureDiscovery.clearPreferences(context, <String>{
-                      //   //   '1',
-                      //   // });
-                      //   FeatureDiscovery.discoverFeatures(
-                      //     context,
-                      //     const <String>{
-                      //       '1',
-                      //     },
-                      //   );
-                      //   return;
-                      // }
                       setState(() {
                         sendingData = true;
                       });
@@ -294,12 +286,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                       box20,
                       TextFormField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: area,
-                        onChanged: (value) {
-                          //  searchPickup(value);
-                        },
+                        controller: companyDescription,
                         decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.gps_fixed),
                             isDense: true, // Added this
                             contentPadding: EdgeInsets.all(15),
                             focusedBorder: OutlineInputBorder(
@@ -313,28 +301,52 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.grey[200]!)),
-                            labelText: "Area*"),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
+                            labelText: "Description of Company*"),
                       ),
-                      Stack(
+                      box20,
+                      Column(
                         children: [
-                          Column(
+                          Row(
                             children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              TextFormField(
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                controller: streetAddress,
-                                decoration: InputDecoration(
-                                    isDense: true, // Added this
-                                    prefixIcon: Icon(FontAwesomeIcons.building),
+                              Expanded(
+                                child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Required';
+                                    }
+                                    return null;
+                                  },
+                                  controller: pickupPin,
+                                  onChanged: (pin) async {
+                                    var pickupPin = int.tryParse(pin);
+                                    int? count = 0, temp = pickupPin;
+                                    while (temp! > 0) {
+                                      count = count! + 1;
+                                      temp = (temp / 10).floor();
+                                    }
+                                    print(count);
+
+                                    if (count == 6) {
+                                      setState(() {
+                                        gettingPin = true;
+                                      });
+                                      searchPickupPin(pin);
+                                    }
+                                  },
+                                  scrollPadding:
+                                      const EdgeInsets.only(bottom: 150.0),
+                                  maxLength: 6,
+                                  decoration: InputDecoration(
+                                    suffix: gettingPin
+                                        ? SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator())
+                                        : SizedBox.shrink(),
+                                    isDense: true,
+                                    counterText: "",
                                     contentPadding: EdgeInsets.all(15),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius:
@@ -344,231 +356,113 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                         color: Color(0xFF2821B5),
                                       ),
                                     ),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey[200]!)),
-                                    labelText: "Street Address*"),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter some text';
-                                  }
-                                  return null;
-                                },
+                                    border: new OutlineInputBorder(
+                                        borderSide:
+                                            new BorderSide(color: Colors.grey)),
+                                    labelText: "Pin Code",
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  textInputAction: TextInputAction.next,
+                                ),
                               ),
                               SizedBox(
-                                height: 20,
+                                width: 10,
                               ),
-                              MultiSelectBottomSheetField(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.grey,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5)),
-                                initialChildSize: 0.5,
-                                listType: MultiSelectListType.CHIP,
-                                searchable: true,
-                                initialValue: baseCity,
-                                buttonText: Text(
-                                  "Select Base Cities",
-                                  style: TextStyle(
-                                      color: Colors.grey[700],
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                title: Text(
-                                    "Cities where your business is located"),
-                                items: _items as List<MultiSelectItem>,
-                                onSelectionChanged: (values) {
-                                  setState(() {
-                                    baseCity = values;
-                                    baseLocation = values;
-                                  });
-                                },
-                                onConfirm: (values) {
-                                  setState(() {
-                                    baseCity = values;
-                                    baseLocation = values;
-                                  });
-                                },
-                                chipDisplay: MultiSelectChipDisplay(
-                                  onTap: (dynamic value) {
-                                    setState(() {
-                                      baseCity.remove(value);
-                                      baseLocation!.remove(value);
-                                    });
+                              Expanded(
+                                child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Required';
+                                    }
+                                    return null;
                                   },
+                                  scrollPadding:
+                                      const EdgeInsets.only(bottom: 150.0),
+                                  controller: pickupAddress,
+                                  onChanged: (value) {
+                                    searchPickup(value);
+                                  },
+                                  decoration: textfieldDecoration(
+                                      "Area / Colony", "Search Area"),
+                                  textInputAction: TextInputAction.next,
                                 ),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please select base cities';
-                                  }
-                                  return null;
-                                },
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Upload Display Image :",
-                                    style: TextStyle(color: Colors.grey[700]),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  displayImage == null
-                                      ? RawMaterialButton(
-                                          onPressed: () async {
-                                            await getDisplayImage();
-                                            setState(() {
-                                              displayImage = displayImage;
-                                            });
-                                          },
-                                          elevation: 0,
-                                          fillColor: Color(0xFFf9a825),
-                                          child: Icon(
-                                            FontAwesomeIcons.camera,
-                                            size: 20.0,
-                                          ),
-                                          padding: EdgeInsets.all(10.0),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10)))
-                                      : GestureDetector(
-                                          onTap: () async {
-                                            await getDisplayImage();
-                                            setState(() {
-                                              displayImage = displayImage;
-                                            });
-                                          },
-                                          child: Icon(Icons.done),
-                                        ),
-                                ],
                               ),
                             ],
                           ),
+                          if (pickupPinResults != null &&
+                              pickupPinResults!.length != 0)
+                            getSuggestions(pickupPinResults!, "Pickup"),
                           if (pickupSearchResults != null &&
                               pickupSearchResults!.length != 0)
-                            Container(
-                                height: 200,
-                                width: double.infinity,
-                                decoration: BoxDecoration(color: Colors.white)),
-                          if (pickupSearchResults != null)
-                            Container(
-                              height: 200,
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: pickupSearchResults!.length,
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                          border: Border(
-                                              bottom: BorderSide(
-                                                  color: Colors.grey[100]!))),
-                                      child: ListTile(
-                                        dense: true,
-                                        title: Text(
-                                          pickupSearchResults![index]
-                                              .description!,
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        onTap: () {
-                                          setState(() {
-                                            area.text =
-                                                pickupSearchResults![index]
-                                                    .description!;
-
-                                            //pickupSearchResults[index].placeId
-                                          });
-                                          print(pickupSearchResults![index]);
-                                          // _getPincode(
-                                          //     pickupSearchResults[index].placeId);
-                                          setState(() {
-                                            pickupSearchResults = null;
-                                          });
-                                        },
-                                      ),
-                                    );
-                                  }),
-                            ),
-                          SizedBox(
-                            height: 20,
+                            getSuggestions(pickupSearchResults!, "Pickup"),
+                          box20,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Required';
+                                    }
+                                    return null;
+                                  },
+                                  controller: pickupCity,
+                                  scrollPadding:
+                                      const EdgeInsets.only(bottom: 150.0),
+                                  decoration:
+                                      textfieldDecoration("Town / City", ""),
+                                  textInputAction: TextInputAction.next,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Required';
+                                    }
+                                    return null;
+                                  },
+                                  controller: pickupState,
+                                  scrollPadding:
+                                      const EdgeInsets.only(bottom: 150.0),
+                                  decoration: textfieldDecoration("State", ""),
+                                  textInputAction: TextInputAction.next,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                       box20,
-                      Align(
-                          alignment: Alignment.bottomLeft,
-                          child: DescribedFeatureOverlay(
-                            featureId: '1',
-                            targetColor: Colors.white,
-                            textColor: Colors.white,
-                            backgroundColor: primaryColor,
-                            onOpen: () async {
-                              WidgetsBinding.instance!
-                                  .addPostFrameCallback((_) {
-                                ensureKey!.currentState!.ensureVisible(
-                                  preciseAlignment: 0.5,
-                                  duration: const Duration(milliseconds: 400),
-                                );
-                              });
-                              return true;
-                            },
-                            // ignore: missing_return
-                            // onBackgroundTap: () {
-                            //   FeatureDiscovery.dismissAll(context);
-                            //   showCatalog();
-                            // },
-
-                            contentLocation: ContentLocation.below,
-                            title: Text(
-                              'Build Your Own Catalog',
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  backgroundColor: primaryColor),
-                            ),
-                            overflowMode: OverflowMode.ignore,
-                            description: Text(
-                              'Add business images and description so that customers will know more about you.',
-                              style: TextStyle(
-                                  backgroundColor: primaryColor, fontSize: 13),
-                            ),
-                            tapTarget: IconButton(
-                              onPressed: () {
-                                FeatureDiscovery.dismissAll(context);
-                                showCatalog();
-                              },
-                              icon: Icon(Icons.add),
-                            ),
-
-                            child: EnsureVisible(
-                              key: ensureKey,
-                              child: TextButton(
-                                  onPressed: () {
-                                    showCatalog();
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.add,
-                                        color: Color(0xFF3f51b5),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        "Build your own catalog",
-                                        style: TextStyle(
-                                          color: Color(0xFF3f51b5),
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                            ),
+                      TextButton(
+                          onPressed: () {
+                            showCatalog();
+                          },
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.add,
+                                color: Color(0xFF3f51b5),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Build your own catalog",
+                                style: TextStyle(
+                                  color: Color(0xFF3f51b5),
+                                ),
+                              ),
+                            ],
                           )),
                       Container(
                           width: double.maxFinite,
@@ -647,23 +541,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                             })),
                   ),
                   C.box20,
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: companyDescription,
-                    decoration: InputDecoration(
-                        isDense: true, // Added this
-                        contentPadding: EdgeInsets.all(15),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          borderSide: BorderSide(
-                            width: 1,
-                            color: Color(0xFF2821B5),
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey[200]!)),
-                        labelText: "Description of Company*"),
-                  ),
                   box20,
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -707,35 +584,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Incorporation Certificate :\n(Optional)",
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      incorporationCertificate == null
-                          ? RawMaterialButton(
-                              onPressed: () {
-                                getIncorporationCertificate();
-                              },
-                              elevation: 0,
-                              fillColor: Color(0xFFf9a825),
-                              child: ImageIcon(AssetImage("assets/upload.png")),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)))
-                          : GestureDetector(
-                              onTap: () {
-                                getIncorporationCertificate();
-                              },
-                              child: Icon(Icons.done))
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: [
                       Text("Other images showing business :"),
                       SizedBox(
                         width: 20,
@@ -743,7 +591,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                       otherImages!.length != 0
                           ? GestureDetector(
                               onTap: () async {
-                                await getOtherImages();
                                 setState(() {
                                   otherImages = otherImages;
                                 });
@@ -751,7 +598,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               child: Icon(Icons.done))
                           : RawMaterialButton(
                               onPressed: () async {
-                                await getOtherImages();
                                 setState(() {
                                   otherImages = otherImages;
                                 });
@@ -852,42 +698,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
         });
   }
 
-  void _getUserLocation() async {
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == loc.PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != loc.PermissionStatus.granted) {
-        return;
-      }
-    }
-    _locationData = await location.getLocation();
-    print(_locationData.latitude.toString());
-    print(_locationData.longitude.toString());
-    setState(() {
-      lat = _locationData.latitude.toString();
-      lng = _locationData.longitude.toString();
-    });
-    getCity(lat.toString(), lng.toString());
-  }
-
-  getCity(lat, lon) async {
-    var dio = Dio();
-    final resp = await dio.get(
-        "https://nominatim.openstreetmap.org/reverse?format=json&lat=$lat&lon=$lon");
-    print(resp.data);
-    setState(() {
-      area.text = resp.data["display_name"];
-      // baseCity.add(resp.data["address"]["state_district"]);
-    });
-  }
-
   postUserInfoData() async {
     Map<String, dynamic> data = {
       "uid": _auth.currentUser!.uid,
@@ -895,9 +705,6 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
       "baseCity": baseCity,
       "smsOnboarding": widget.data != null ? true : false,
       "companyName": companyName.text,
-      "address": "${streetAddress.text}, ${area.text}",
-      "area": area.text,
-      "street": streetAddress.text,
       "gstNo": gstNo.text,
       "companyDescription": companyDescription.text,
       "website": websiteLink.text,
@@ -920,261 +727,171 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
     return database;
   }
 
-  getIncorporationCertificate() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      withReadStream: true,
-      allowedExtensions: ['jpg', 'pdf', 'doc'],
-      type: FileType.custom,
+  Widget getSuggestions(List suggestions, String type) {
+    return Container(
+      constraints: new BoxConstraints(
+        maxHeight: 200.0,
+      ),
+      child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: suggestions.length,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: new BoxDecoration(
+                  border: new Border(
+                      bottom: new BorderSide(color: Colors.grey[100]!))),
+              child: ListTile(
+                  dense: true,
+                  title: Text(
+                    suggestions[index]["Name"],
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    getLatLng(suggestions[index]["Pincode"], type);
+
+                    FocusScope.of(context).unfocus();
+
+                    setState(() {
+                      pickupAddress.text = suggestions[index]["Name"];
+                      pickupPin.text = suggestions[index]["Pincode"];
+                      pickupCity.text = suggestions[index]["Division"];
+                      pickupState.text = suggestions[index]["State"];
+                    });
+
+                    print(suggestions[index]);
+                    setState(() {
+                      suggestions = [];
+                      pickupPinResults = null;
+                      pickupSearchResults = null;
+                    });
+                  }),
+            );
+          }),
     );
-    if (result != null) {
-      print(result);
-      print(result.files);
-      print(result.files.single);
-      print(result.files.single.name);
-      print(result.files.single.size);
-      print(result.files.single.path);
-      setState(() {
-        // print(paths.first.extension);
-        // fileName = paths != null ? paths.map((e) => e.name).toString() : '...';
-        // print(fileName);
-      });
-      setState(() {
-        incorporationCertificate = result.files.single;
-      });
-      uploadIncorpCertificate();
-    } else {
-      // User canceled the picker
-    }
   }
 
-  getDisplayImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      withReadStream: true,
-      allowedExtensions: ["jpg"],
-      type: FileType.custom,
-    );
-    if (result != null) {
-      setState(() {
-        displayImage = result.files.single;
-      });
-      uploadDisplayImage();
-    } else {
-      // User canceled the picker
+  void _getUserLocation() async {
+    setState(() {
+      gettingAddress = true;
+    });
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        setState(() {
+          gettingAddress = false;
+        });
+        return;
+      }
     }
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        setState(() {
+          gettingAddress = false;
+        });
+        return;
+      }
+    }
+    _locationData = await location.getLocation();
+    print(_locationData.latitude.toString());
+    print(_locationData.longitude.toString());
+    setState(() {
+      latitude = _locationData.latitude;
+      longitude = _locationData.longitude;
+    });
+
+    getCity(
+        _locationData.latitude.toString(), _locationData.longitude.toString());
   }
 
-  getOtherImages() async {
+  getLatLng(pin, type) async {
+    setState(() {
+      longitude = null;
+    });
+    final resp = await dio.get(
+        "https://nominatim.openstreetmap.org/search?format=json&postalcode=$pin&country=india");
+    print(resp.data);
+    var map = resp.data[0];
+    setState(() {
+      latitude = double.tryParse(map["lat"]);
+      longitude = double.tryParse(map["lon"]);
+    });
+    print(latitude);
+  }
+
+  getCity(lat, lon) async {
     try {
-      otherImages = (await FilePicker.platform.pickFiles(
-        withReadStream: true,
-        allowMultiple: true,
-        allowedExtensions: ["jpg"],
-        type: FileType.custom,
-      ))
-          ?.files;
+      final resp = await dio.get(
+          "https://nominatim.openstreetmap.org/reverse?format=json&lat=$lat&lon=$lon");
+      print(resp.data);
       setState(() {
-        otherImages = otherImages;
+        pickupAddress.text = resp.data["address"]["county"];
+        pickupPin.text = resp.data["address"]["postcode"];
+        pickupCity.text = resp.data["address"]["state_district"];
+        pickupState.text = resp.data["address"]["state"];
+        gettingAddress = false;
       });
-      print(otherImages!.length);
-      uploadOtherImages();
-    } on PlatformException catch (e) {
-      print("Unsupported operation" + e.toString());
-    } catch (ex) {
-      print(ex);
+    } catch (e) {
+      setState(() {
+        gettingAddress = false;
+      });
     }
   }
 
-  uploadIncorpCertificate() async {
+  Future<List<dynamic>?> getAreaData(String search) async {
+    final response = await dio.get(
+      "https://api.postalpincode.in/postoffice/$search",
+    );
+    print(response.data);
+    var map = response.data[0]["PostOffice"];
+
+    print(map);
+    return map;
+  }
+
+  Future<List<dynamic>?> getPinData(pin) async {
+    FocusScope.of(context).unfocus();
+    var response = await dio.get("https://api.postalpincode.in/pincode/$pin");
+    print(response.data);
+    var data = response.data;
+    return data[0]["PostOffice"];
+  }
+
+  searchPickup(String searchTerm) async {
+    pickupSearchResults = await getAreaData(searchTerm);
     setState(() {
-      uploadingImages = true;
+      pickupSearchResults = pickupSearchResults;
     });
-    final mimeType = lookupMimeType(incorporationCertificate!.name);
-    print(mimeType);
-
-    await dio.post(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/document?type=packersAndMovers',
-        data: {
-          "contentType": mimeType,
-          "metaData": {
-            "contentType": mimeType,
-          },
-        }).then((response) async {
-      Map<String, dynamic> map = json.decode(response.toString());
-
-      setState(() {
-        incorporationCertificateLink = map['key'];
-      });
-      print(incorporationCertificateLink);
-
-      dio.put(
-        map['s3PutObjectUrl'],
-        data: incorporationCertificate!.readStream,
-        options: Options(
-          contentType: mimeType,
-          headers: {"Content-Length": incorporationCertificate!.size},
-        ),
-        onSendProgress: (int sentBytes, int totalBytes) {
-          double progressPercent = sentBytes / totalBytes * 100;
-          print("$progressPercent %");
-        },
-      ).then((response) {
-        print(response);
-        print(response.statusCode);
-        dio.post(
-            'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?type=packersAndMoversSP',
-            data: {
-              "type": "packersAndMoversSP",
-              "id": _auth.currentUser!.uid,
-              "mobile": _auth.currentUser!.phoneNumber,
-              "tenantUsecase": "pam",
-              "tenantSet_id": "PAM01",
-              "incorporationCertificate":
-                  incorporationCertificateLink.toString()
-            }).then((response) {
-          print(response);
-          setState(() {
-            uploadingImages = false;
-          });
-        });
-      }).catchError((error) {
-        setState(() {
-          uploadingImages = false;
-        });
-        print(error);
-      });
-    });
+    print(pickupSearchResults);
   }
 
-  uploadDisplayImage() async {
+  searchPickupPin(String pin) async {
+    pickupPinResults = await getPinData(pin);
     setState(() {
-      uploadingImages = true;
+      pickupPinResults = pickupPinResults;
+      gettingPin = false;
     });
-    final mimeType = lookupMimeType(displayImage!.name);
-    await dio.post(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/document?type=packersAndMovers',
-        data: {
-          "contentType": mimeType,
-          "metaData": {
-            "contentType": mimeType,
-          },
-        }).then((response) async {
-      print(response);
-      Map<String, dynamic> map = json.decode(response.toString());
-      setState(() {
-        displayImageLink = map['key'];
-      });
-      print(displayImageLink);
-      print(mimeType);
+    print(pickupPinResults);
+  }
+}
 
-      dio.put(
-        map['s3PutObjectUrl'],
-        data: displayImage!.readStream,
-        options: Options(
-          contentType: mimeType,
-          headers: {
-            "Content-Length": displayImage!.size,
-          },
+textfieldDecoration(label, hint) {
+  return InputDecoration(
+      isDense: true,
+      counterText: "",
+      contentPadding: EdgeInsets.all(15),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(
+          width: 1,
+          color: Color(0xFF2821B5),
         ),
-        onSendProgress: (int sentBytes, int totalBytes) {
-          double progressPercent = sentBytes / totalBytes * 100;
-          print("$progressPercent %");
-        },
-      ).then((response) {
-        print(response);
-        print(response.statusCode);
-        dio.post(
-            'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?type=packersAndMoversSP',
-            data: {
-              "type": "packersAndMoversSP",
-              "id": _auth.currentUser!.uid,
-              "mobile": _auth.currentUser!.phoneNumber,
-              "tenantUsecase": "pam",
-              "tenantSet_id": "PAM01",
-              "displayImage": displayImageLink.toString()
-            }).then((response) {
-          print(response);
-        });
-        dio.post(
-            'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/serviceprovidercost',
-            data: {
-              "serviceProviderId": _auth.currentUser!.uid,
-              "mobile": _auth.currentUser!.phoneNumber,
-              "tenantUsecase": "pam",
-              "tenantSet_id": "PAM01",
-              "selfInfo": {"displayImage": displayImageLink.toString()}
-            }).then((value) => print(value));
-        print(response);
-        setState(() {
-          uploadingImages = false;
-        });
-      }).catchError((error) {
-        setState(() {
-          uploadingImages = false;
-        });
-        print(error);
-      });
-    });
-  }
-
-  uploadOtherImages() async {
-    for (var i = 0; i < otherImages!.length; i++) {
-      setState(() {
-        uploadingImages = true;
-      });
-      final mimeType = lookupMimeType(otherImages![i].name);
-      await dio.post(
-          'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/document?type=packersAndMovers',
-          data: {
-            "contentType": mimeType,
-            "metaData": {
-              "contentType": mimeType,
-            },
-          }).then((response) async {
-        print(response);
-        Map<String, dynamic> map = json.decode(response.toString());
-        setState(() {
-          otherImagesLink.add(map['key']);
-        });
-        print(otherImagesLink[i]);
-        dio.put(
-          map['s3PutObjectUrl'],
-          data: otherImages![i].readStream,
-          options: Options(
-            contentType: mimeType,
-            headers: {
-              "Content-Length": otherImages![i].size,
-            },
-          ),
-          onSendProgress: (int sentBytes, int totalBytes) {
-            double progressPercent = sentBytes / totalBytes * 100;
-            print("$progressPercent %");
-          },
-        ).then((response) {
-          print(response);
-
-          print(response.statusCode);
-        }).catchError((error) {
-          setState(() {
-            uploadingImages = false;
-          });
-          print(error);
-        });
-      });
-    }
-    dio.post(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?type=packersAndMoversSP',
-        data: {
-          "type": "packersAndMoversSP",
-          "id": _auth.currentUser!.uid,
-          "mobile": _auth.currentUser!.phoneNumber,
-          "tenantUsecase": "pam",
-          "tenantSet_id": "PAM01",
-          "otherImages": otherImagesLink
-        }).then((response) {
-      print(response);
-      setState(() {
-        uploadingImages = false;
-      });
-    });
-  }
+      ),
+      border: new OutlineInputBorder(
+          borderSide: new BorderSide(color: Colors.grey)),
+      labelText: label,
+      hintText: hint);
 }

@@ -111,16 +111,17 @@ displaySnackBar(text, ctx) {
   ScaffoldMessenger.of(ctx).showSnackBar(
     SnackBar(
       content: Text(text),
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     ),
   );
 }
 
 launchWhatsApp() async {
   logEvent("Contact_Us");
-  final link = WhatsAppUnilink(
+  const link = WhatsAppUnilink(
     phoneNumber: '+918209145057',
-    text: "Hey! I'm inquiring about the services provided by Goflexe",
+    text:
+        "Hey! I'm inquiring about the services provided by Express Packers & Movers",
   );
   await launch('$link');
 }

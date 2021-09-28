@@ -1,4 +1,3 @@
-import 'package:feature_discovery/feature_discovery.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -67,22 +66,19 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return loading
         ? const Center(child: CircularProgressIndicator())
-        : FeatureDiscovery(
-            child: GetMaterialApp(
-              debugShowCheckedModeBanner: false,
-              title: 'Packers And Movers',
-              defaultTransition: Transition.fadeIn,
-              theme: themeData(context),
-              getPages: [
-                GetPage(name: "/", page: () => BottomNavScreen()),
-                GetPage(name: "/login", page: () => Onboarding()),
-                GetPage(name: "/onboarding", page: () => MandatoryKYC()),
-                GetPage(name: "/accept-order", page: () => Notifications())
-              ],
-              home: _auth.currentUser == null
-                  ? SMSOnboarding()
-                  : BottomNavScreen(),
-            ),
+        : GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Packers And Movers',
+            defaultTransition: Transition.fadeIn,
+            theme: themeData(context),
+            getPages: [
+              GetPage(name: "/", page: () => BottomNavScreen()),
+              GetPage(name: "/login", page: () => Onboarding()),
+              GetPage(name: "/onboarding", page: () => MandatoryKYC()),
+              GetPage(name: "/accept-order", page: () => Notifications())
+            ],
+            home:
+                _auth.currentUser == null ? SMSOnboarding() : BottomNavScreen(),
           );
   }
 }

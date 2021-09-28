@@ -21,7 +21,6 @@ dependencies:
   dio: ^4.0.0
   dotted_line: ^3.0.0
   dropdown_search: ^1.0.0
-  feature_discovery: ^0.14.0
   file_picker: ^4.1.1
   firebase_analytics: ^8.3.2
   firebase_auth: ^3.1.1
@@ -53,6 +52,7 @@ dependencies:
   carousel_slider: ^4.0.0
   flutter_automation: ^2.0.0
   get: ^4.3.8
+  geoflutterfire: ^3.0.1
 
 dev_dependencies:
   flutter_test:
