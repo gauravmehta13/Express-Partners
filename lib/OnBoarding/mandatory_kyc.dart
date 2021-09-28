@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
@@ -71,14 +69,13 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   bool uploadingImages = false;
   bool tappedOnCatalog = false;
 
-  var pickupAddress = new TextEditingController();
+  var pickupAddress = TextEditingController();
 
   List _items = [];
 
   @override
   void initState() {
     super.initState();
-
     _items = cities
         .map((i) => MultiSelectItem<dynamic>(
               i,
@@ -86,62 +83,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
             ))
         .toList();
 
-    getProgress();
-    if (widget.data != null) {
-      prefillData();
-    }
-    logEvent("KYC_Screen");
-  }
-
-  prefillData() {
-    companyName.text = widget.data["Business Name"];
-  }
-
-  getKycData() async {
-    try {
-      final response = await dio.get(
-        'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/kyc/info?tenantSet_id=PAM01&tenantUsecase=pam&type=packersAndMoversSP&id=${_auth.currentUser!.uid}',
-      );
-      print(response);
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  getProgress() async {
     _getUserLocation();
-    try {
-      final response = await dio.get(
-          'https://t2v0d33au7.execute-api.ap-south-1.amazonaws.com/Staging01/serviceprovidercost?tenantSet_id=PAM01&tenantUsecase=pam&type=serviceProviderId&serviceProviderId=${_auth.currentUser!.uid}');
-
-      Map<String, dynamic> map = json.decode(response.toString());
-      print(map);
-      if (map['resp']['Items'] != null) {
-        if (map['resp']['Items'][0]['selfInfo'].length != 0) {
-          var info = map['resp']['Items'][0]['selfInfo'];
-          setState(() {
-            companyName.text = info["companyName"];
-            companyDescription.text = info["companyDescription"];
-
-            gstNo.text = info["gstNo"];
-            websiteLink.text = info["website"];
-            loading = false;
-          });
-        } else {
-          if (mounted) {
-            setState(() {
-              loading = false;
-            });
-          }
-        }
-        print(map['resp']['Items'][0]['selfInfo']);
-      }
-    } catch (e) {
-      print(e);
-      setState(() {
-        loading = false;
-      });
-    }
+    logEvent("KYC_Screen");
   }
 
   @override
@@ -161,7 +104,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
         child: const FaIcon(FontAwesomeIcons.whatsapp),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
         child: SizedBox(
           height: 60,
           width: double.infinity,
@@ -356,9 +299,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                                         color: Color(0xFF2821B5),
                                       ),
                                     ),
-                                    border: new OutlineInputBorder(
+                                    border: OutlineInputBorder(
                                         borderSide:
-                                            new BorderSide(color: Colors.grey)),
+                                            BorderSide(color: Colors.grey)),
                                     labelText: "Pin Code",
                                   ),
                                   keyboardType: TextInputType.number,
@@ -729,7 +672,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
 
   Widget getSuggestions(List suggestions, String type) {
     return Container(
-      constraints: new BoxConstraints(
+      constraints: BoxConstraints(
         maxHeight: 200.0,
       ),
       child: ListView.builder(
@@ -738,9 +681,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
           itemCount: suggestions.length,
           itemBuilder: (context, index) {
             return Container(
-              decoration: new BoxDecoration(
-                  border: new Border(
-                      bottom: new BorderSide(color: Colors.grey[100]!))),
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey[100]!))),
               child: ListTile(
                   dense: true,
                   title: Text(
@@ -890,8 +832,7 @@ textfieldDecoration(label, hint) {
           color: Color(0xFF2821B5),
         ),
       ),
-      border: new OutlineInputBorder(
-          borderSide: new BorderSide(color: Colors.grey)),
+      border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
       labelText: label,
       hintText: hint);
 }
