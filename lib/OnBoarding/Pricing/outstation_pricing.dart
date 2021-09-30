@@ -8,7 +8,7 @@ import '../../constants.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class OutStationPricing extends StatefulWidget {
-  final data;
+  final Map? data;
   final ValueChanged<int>? update;
   OutStationPricing({this.update, this.data});
   @override
@@ -22,9 +22,12 @@ class _OutStationPricingState extends State<OutStationPricing> {
   var dio = Dio();
   bool sendingData = false;
 
+  Map outStationPrices = {};
+
   @override
   void initState() {
     super.initState();
+    if (widget.data != null) outStationPrices = widget.data!["outStation"];
   }
 
   postOutstationPricing() async {
@@ -43,7 +46,6 @@ class _OutStationPricingState extends State<OutStationPricing> {
         .then((value) => widget.update!(2))
         .onError((error, stackTrace) {
       displaySnackBar("error, please try again later", context);
-    
     });
   }
 
@@ -90,15 +92,14 @@ class _OutStationPricingState extends State<OutStationPricing> {
                           SizedBox(
                             height: 10,
                           ),
-                          Text("price per 500km ")
+                          Text("price per 500km "),
                           Row(
                             children: [
                               Expanded(
                                 child: TextFormField(
-                                  initialValue: cityPrice["oneBHKprice"],
+                                  initialValue: outStationPrices["1BHK"],
                                   onChanged: (e) {
-                                    cityPrice["oneBHKprice"] = e;
-                                    print(basePrices);
+                                    outStationPrices["1BHK"] = e;
                                   },
                                   style: TextStyle(
                                       fontSize: 12, color: Color(0xFF3f51b5)),
@@ -119,10 +120,9 @@ class _OutStationPricingState extends State<OutStationPricing> {
                               ),
                               Expanded(
                                 child: TextFormField(
-                                  initialValue: cityPrice["twoBHKprice"],
+                                  initialValue: outStationPrices["2BHK"],
                                   onChanged: (e) {
-                                    cityPrice["twoBHKprice"] = e;
-                                    print(basePrices);
+                                    outStationPrices["2BHK"] = e;
                                   },
                                   style: TextStyle(
                                       fontSize: 12, color: Color(0xFF3f51b5)),
@@ -143,12 +143,11 @@ class _OutStationPricingState extends State<OutStationPricing> {
                               ),
                               Expanded(
                                 child: TextFormField(
-                                  initialValue: cityPrice["threeBHKprice"],
+                                  initialValue: outStationPrices["3BHK"],
                                   onChanged: (e) {
-                                    cityPrice["threeBHKprice"] = e;
-                                    print(basePrices);
+                                    outStationPrices["3BHK"] = e;
                                   },
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 12, color: Color(0xFF3f51b5)),
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
@@ -164,7 +163,6 @@ class _OutStationPricingState extends State<OutStationPricing> {
                               ),
                             ],
                           ),
-                        
                         ],
                       ),
                     ),

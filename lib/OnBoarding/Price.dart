@@ -31,6 +31,22 @@ class _AllPricesState extends State<AllPrices> {
   @override
   void initState() {
     super.initState();
+    getAveragePrices();
+  }
+
+  Map avgPrices = {};
+
+  getAveragePrices() async {
+    var dio = Dio();
+    try {
+      final response = await dio.get(
+          "https://my-json-server.typicode.com/gauravmehta13/Express-Partners/prices");
+      setState(() {
+        avgPrices = response.data;
+      });
+    } catch (e) {
+      displaySnackBar("Error, Please Try Again Later..!!", context);
+    }
   }
 
   Map<String, dynamic>? data = {};
