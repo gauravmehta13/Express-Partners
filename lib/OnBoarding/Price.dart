@@ -49,8 +49,6 @@ class _AllPricesState extends State<AllPrices> {
     }
   }
 
-  Map<String, dynamic>? data = {};
-
   void _update(int count) {
     setState(() => _currentStep = count);
     FocusScopeNode currentFocus = FocusScope.of(context);
@@ -152,7 +150,7 @@ class _AllPricesState extends State<AllPrices> {
                     state: _getState(1),
                     content: WithinCityPricing(
                       update: _update,
-                      data: data,
+                      data: avgPrices,
                     )),
                 FAStep(
                     state: _getState(2),
@@ -160,19 +158,19 @@ class _AllPricesState extends State<AllPrices> {
                     isActive: true,
                     content: OutStationPricing(
                       update: _update,
-                      data: data,
+                      data: avgPrices,
                     )),
                 FAStep(
                     state: _getState(3),
                     title: Text('Vehicle'),
                     isActive: true,
-                    content: VehiclePricing(update: _update, data: data)),
+                    content: VehiclePricing(update: _update, data: avgPrices)),
                 FAStep(
                     state: _getState(4),
                     title: Text('Offerings'),
                     isActive: true,
                     content: ServiceOfferingPricing(
-                        update: _update, data: data, old: widget.old)),
+                        update: _update, data: avgPrices, old: widget.old)),
               ],
             ),
     );
