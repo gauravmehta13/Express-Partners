@@ -1,3 +1,4 @@
+import 'package:express_partner/OnBoarding/price.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -6,7 +7,6 @@ import 'package:get/get.dart';
 
 import 'OnBoarding/mandatory_kyc.dart';
 import 'OnBoarding/onboarding.dart';
-import 'OnBoarding/sms_onboarding.dart';
 import 'Screens/Order/notifications.dart';
 import 'Screens/bottom_navbar.dart';
 import 'constants.dart';
@@ -38,9 +38,7 @@ class _MyAppState extends State<MyApp> {
       subscription.onData((event) async {
         if (event != null) {
           debugPrint("We have a user now");
-          setState(() {
-            // home = "/";
-          });
+          setState(() {});
           subscription.cancel();
           setState(() {});
           debugPrint(FirebaseAuth.instance.currentUser!.uid);
@@ -76,8 +74,8 @@ class _MyAppState extends State<MyApp> {
               GetPage(name: "/onboarding", page: () => const MandatoryKYC()),
               GetPage(name: "/accept-order", page: () => Notifications())
             ],
-            home:
-                _auth.currentUser == null ? SMSOnboarding() : BottomNavScreen(),
+            home: AllPrices(),
+            //home: _auth.currentUser == null ? Onboarding() : BottomNavScreen(),
           );
   }
 }

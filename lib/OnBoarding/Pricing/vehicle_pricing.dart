@@ -53,13 +53,13 @@ class _VehiclePricingState extends State<VehiclePricing> {
           var tempPrices = mapByKey("fromCity",
               widget.data['resp']['Items'][0]['vehicles']["cities"]);
 
-          for (var i = 0; i < tempPrices.length; i++) {
-            if (baseLocation!.contains(tempPrices[i].keys.first)) {
-              basePrices.add(tempPrices[i]);
-            } else {
-              prices.add(tempPrices[i]);
-            }
-          }
+          // for (var i = 0; i < tempPrices.length; i++) {
+          //   if (baseLocation!.contains(tempPrices[i].keys.first)) {
+          //     basePrices.add(tempPrices[i]);
+          //   } else {
+          //     prices.add(tempPrices[i]);
+          //   }
+          // }
 
           print(basePrices);
 

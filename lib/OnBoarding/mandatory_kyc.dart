@@ -1,7 +1,9 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:express_partner/OnBoarding/price.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,11 +16,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
-import '../Screens/review_screen.dart';
 import '../Widgets/loading.dart';
 import '../appbar.dart';
 import '../constants.dart';
-import '../fade_route.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -57,7 +57,8 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   var companyName = TextEditingController();
   var companyDescription = TextEditingController();
 
-  List baseCity = [];
+  List withinCity = [];
+  List outStationCity = [];
 
   List<String?> otherImagesLink = [];
   bool uploadingImages = false;
@@ -118,7 +119,10 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                       setState(() {
                         sendingData = true;
                       });
-                      postUserInfoData();
+                      await postUserInfoData();
+                      setState(() {
+                        sendingData = false;
+                      });
                     }
                   },
             child: sendingData == true || uploadingImages == true
@@ -380,9 +384,9 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                         initialChildSize: 0.5,
                         listType: MultiSelectListType.CHIP,
                         searchable: true,
-                        initialValue: baseCity,
+                        initialValue: withinCity,
                         buttonText: Text(
-                          "Select Serving Cities",
+                          "Select Within Cities",
                           style: TextStyle(
                               color: Colors.grey[700],
                               fontSize: 12,
@@ -392,21 +396,61 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                         items: _items as List<MultiSelectItem>,
                         onSelectionChanged: (values) {
                           setState(() {
-                            baseCity = values;
-                            baseLocation = values;
+                            withinCity = values;
                           });
                         },
                         onConfirm: (values) {
                           setState(() {
-                            baseCity = values;
-                            baseLocation = values;
+                            withinCity = values;
                           });
                         },
                         chipDisplay: MultiSelectChipDisplay(
                           onTap: (dynamic value) {
                             setState(() {
-                              baseCity.remove(value);
-                              baseLocation!.remove(value);
+                              withinCity.remove(value);
+                            });
+                          },
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select base cities';
+                          }
+                          return null;
+                        },
+                      ),
+                      MultiSelectBottomSheetField(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.circular(5)),
+                        initialChildSize: 0.5,
+                        listType: MultiSelectListType.CHIP,
+                        searchable: true,
+                        initialValue: outStationCity,
+                        buttonText: Text(
+                          "Select Outstation Cities",
+                          style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        title: Text("Cities where your business is located"),
+                        items: _items as List<MultiSelectItem>,
+                        onSelectionChanged: (values) {
+                          setState(() {
+                            outStationCity = values;
+                          });
+                        },
+                        onConfirm: (values) {
+                          setState(() {
+                            outStationCity = values;
+                          });
+                        },
+                        chipDisplay: MultiSelectChipDisplay(
+                          onTap: (dynamic value) {
+                            setState(() {
+                              outStationCity.remove(value);
                             });
                           },
                         ),
@@ -461,31 +505,31 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
   postUserInfoData() async {
     Map<String, dynamic> data = {
       "uid": _auth.currentUser!.uid,
-      "mobile": _auth.currentUser!.phoneNumber,
-      "cities": baseCity,
-      "businessName": companyName.text,
-      "about": companyDescription.text,
-      "pin": pin.text,
-      "area": address.text,
-      "city": city.text,
-      "state": state.text,
-      "imgUrl": imageUrl,
-      "otherImages": otherImagesLink
+      "localCities": withinCity,
+      "outstationCities": outStationCity,
+      "about": {
+        "mobile": _auth.currentUser!.phoneNumber,
+        "businessName": companyName.text,
+        "about": companyDescription.text,
+        "pin": pin.text,
+        "area": address.text,
+        "city": city.text,
+        "state": state.text,
+        "imgUrl": imageUrl,
+        "otherImages": otherImagesLink
+      },
+      "localPricing": {},
+      "outstationPricing": {}
     };
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var database = await firebaseFirestore
-        .collection("accounts")
+        .collection("vendors")
         .doc(_auth.currentUser!.uid)
         .set(data)
-        .onError((error, stackTrace) => print(error));
-    Navigator.push(
-      context,
-      FadeRoute(
-          page: ReviewScreen(
-        done: widget.edit != null ? "done" : null,
-      )),
-    );
-    return database;
+        .then((value) => Get.to(() => AllPrices()))
+        .onError((error, stackTrace) {
+      log(error.toString());
+    });
   }
 
   Widget getSuggestions(List suggestions, String type) {

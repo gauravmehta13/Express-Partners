@@ -23,8 +23,8 @@ class RedirectLogin extends StatefulWidget {
   final List? intracity;
   final List? intercity;
   final data;
-  final oldId;
-  RedirectLogin({this.data, this.oldId, this.intercity, this.intracity});
+
+  RedirectLogin({this.data, this.intercity, this.intracity});
 
   @override
   _RedirectLoginState createState() => _RedirectLoginState();

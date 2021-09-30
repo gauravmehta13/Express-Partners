@@ -50,7 +50,68 @@ List<dynamic> cities = [
   "Allahabad",
   "Ranchi",
   "Haora",
-  "Coimbatore"
+  "Coimbatore",
+  "Jabalpur",
+  "Gwalior",
+  "Vijayawada",
+  "Jodhpur",
+  "Madurai",
+  "Raipur",
+  "Kota",
+  "Guwahati",
+  "Chandigarh",
+  "Solapur",
+  "Hubli and Dharwad",
+  "Bareilly",
+  "Moradabad",
+  "Gurgaon",
+  "Aligarh",
+  "Karnataka",
+  "Jalandhar",
+  "Tiruchirappalli",
+  "Bhubaneswar",
+  "Salem",
+  "Mira and Bhayander",
+  "Thiruvananthapuram",
+  "Bhiwandi",
+  "Saharanpur",
+  "Gorakhpur",
+  "Guntur",
+  "Bikaner",
+  "Amravati",
+  "Noida",
+  "	Jamshedpur",
+  "Bhilai Nagar",
+  "Warangal",
+  "Cuttack",
+  "Firozabad",
+  "Kochi",
+  "Bhavnagar",
+  "Dehradun",
+  "Durgapur",
+  "Asansol",
+  "Nanded Waghala",
+  "Kolapur",
+  "Ajmer",
+  "Gulbarga",
+  "Jamnagar",
+  "Ujjain",
+  "Loni",
+  "Siliguri",
+  "Jhansi",
+  "Ulhasnagar",
+  "Nellore",
+  "Jammu",
+  "Sangli Miraj Kupwad",
+  "Belgaum",
+  "Mangalore",
+  "Ambattur",
+  "Tirunelveli",
+  "Malegoan",
+  "Gaya",
+  "Jalgaon",
+  "Udaipur",
+  "Maheshtala"
 ];
 
 List<dynamic> mapByKey(String keyName, List<dynamic> input) {
@@ -66,8 +127,6 @@ List<dynamic> mapByKey(String keyName, List<dynamic> input) {
   }
   return returnValue.values.toList();
 }
-
-List? baseLocation = ["Pune"];
 
 logEvent(String text) {
   // if (kIsWeb) {

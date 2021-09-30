@@ -1,0 +1,26 @@
+{
+    "prices":{
+        "withinCity":{
+            "1BHK":"10500",
+            "2BHK":"13500",
+            "3BHK":"16500"
+        },
+        "outStation":{
+            "1BHK":"15000",
+            "2BHK":"18000",
+            "3BHK":"25000"
+        },
+        "vehicle":{
+            "car":"5000",
+            "bike":"1500",
+            "scooty":"1000"
+        },
+        "offerings":{
+            "installation":"1200",
+            "storagePerDay":"50",
+            "insurance":"3",
+            "unpacking":"1000",
+            "lift":"500"
+        }
+    }
+}
