@@ -418,6 +418,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                           return null;
                         },
                       ),
+                      box5,
                       MultiSelectBottomSheetField(
                         decoration: BoxDecoration(
                             border: Border.all(
@@ -472,7 +473,7 @@ class _MandatoryKYCState extends State<MandatoryKYC> {
                               uploadingImages = false;
                             });
                           },
-                          child: Text("data")),
+                          child: Text("Upload Business images")),
                       Container(
                         height: 100,
                         child: ListView.builder(

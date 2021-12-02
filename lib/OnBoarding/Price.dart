@@ -13,11 +13,11 @@ import 'Pricing/service_offering_pricing.dart';
 import 'Pricing/vehicle_pricing.dart';
 import 'Pricing/within_city_pricing.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 class AllPrices extends StatefulWidget {
   final old;
-  AllPrices({this.old});
+  const AllPrices({Key? key, this.old}) : super(key: key);
   @override
   _AllPricesState createState() => _AllPricesState();
 }
@@ -66,11 +66,11 @@ class _AllPricesState extends State<AllPrices> {
         onPressed: () {
           launchWhatsApp();
         },
-        backgroundColor: Color(0xFF25D366),
-        child: FaIcon(FontAwesomeIcons.whatsapp),
+        backgroundColor: const Color(0xFF25D366),
+        child: const FaIcon(FontAwesomeIcons.whatsapp),
       ),
       appBar: PreferredSize(
-          preferredSize: Size(double.infinity, 60),
+          preferredSize: const Size(double.infinity, 60),
           child: AppBar(
             elevation: 1,
             leading: InkWell(
@@ -91,12 +91,12 @@ class _AllPricesState extends State<AllPrices> {
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
             bottom: PreferredSize(
-              preferredSize: Size(double.infinity, 10.0),
+              preferredSize: const Size(double.infinity, 10.0),
               child: StepProgressView(
                   width: MediaQuery.of(context).size.width,
                   curStep: 2,
-                  color: Color(0xFFf9a825),
-                  titles: [
+                  color: const Color(0xFFf9a825),
+                  titles: const [
                     "",
                     "",
                     "",
@@ -104,7 +104,7 @@ class _AllPricesState extends State<AllPrices> {
             ),
           )),
       body: loading == true
-          ? Container(
+          ? SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Loading())
@@ -112,7 +112,7 @@ class _AllPricesState extends State<AllPrices> {
               // titleHeight: 120.0,
               stepNumberColor: Colors.grey,
               // titleIconArrange: FAStepperTitleIconArrange.column,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               type: _stepperType,
               currentStep: _currentStep,
               onStepTapped: widget.old != null
@@ -145,7 +145,7 @@ class _AllPricesState extends State<AllPrices> {
               },
               steps: [
                 FAStep(
-                    title: Text('Within City'),
+                    title: const Text('Within City'),
                     isActive: true,
                     state: _getState(1),
                     content: WithinCityPricing(
@@ -154,7 +154,7 @@ class _AllPricesState extends State<AllPrices> {
                     )),
                 FAStep(
                     state: _getState(2),
-                    title: Text('Outstation'),
+                    title: const Text('Outstation'),
                     isActive: true,
                     content: OutStationPricing(
                       update: _update,
@@ -162,12 +162,12 @@ class _AllPricesState extends State<AllPrices> {
                     )),
                 FAStep(
                     state: _getState(3),
-                    title: Text('Vehicle'),
+                    title: const Text('Vehicle'),
                     isActive: true,
                     content: VehiclePricing(update: _update, data: avgPrices)),
                 FAStep(
                     state: _getState(4),
-                    title: Text('Offerings'),
+                    title: const Text('Offerings'),
                     isActive: true,
                     content: ServiceOfferingPricing(
                         update: _update, data: avgPrices, old: widget.old)),
@@ -177,11 +177,12 @@ class _AllPricesState extends State<AllPrices> {
   }
 
   FAStepstate _getState(int i) {
-    if (_currentStep >= i)
+    if (_currentStep >= i) {
       return FAStepstate.complete;
-    else if (_currentStep == i - 1) {
+    } else if (_currentStep == i - 1) {
       return FAStepstate.editing;
-    } else
+    } else {
       return FAStepstate.indexed;
+    }
   }
 }

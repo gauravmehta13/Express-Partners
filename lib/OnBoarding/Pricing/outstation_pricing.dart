@@ -10,14 +10,14 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 class OutStationPricing extends StatefulWidget {
   final Map? data;
   final ValueChanged<int>? update;
-  OutStationPricing({this.update, this.data});
+  const OutStationPricing({Key? key, this.update, this.data}) : super(key: key);
   @override
   _OutStationPricingState createState() => _OutStationPricingState();
 }
 
 class _OutStationPricingState extends State<OutStationPricing> {
   final formKey = GlobalKey<FormState>();
-  bool loading = true;
+  bool loading = false;
   bool allPriceAdded = false;
   var dio = Dio();
   bool sendingData = false;
@@ -31,15 +31,9 @@ class _OutStationPricingState extends State<OutStationPricing> {
   }
 
   postOutstationPricing() async {
-    Map<String, dynamic> data = {
-      // "outStationPricing": {
-      //   "1bhk": one.text,
-      //   "2bhk": two.text,
-      //   "3bhk": three.text,
-      // },
-    };
+    Map<String, dynamic> data = {"outStationPricing": outStationPrices};
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    var database = await firebaseFirestore
+    await firebaseFirestore
         .collection("vendors")
         .doc(_auth.currentUser!.uid)
         .update(data)

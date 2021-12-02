@@ -1,4 +1,3 @@
-import 'package:express_partner/OnBoarding/price.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -16,7 +15,7 @@ import 'noti/notis/ab/abNoti.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -74,8 +73,8 @@ class _MyAppState extends State<MyApp> {
               GetPage(name: "/onboarding", page: () => const MandatoryKYC()),
               GetPage(name: "/accept-order", page: () => Notifications())
             ],
-            home: AllPrices(),
-            //home: _auth.currentUser == null ? Onboarding() : BottomNavScreen(),
+            // home: AllPrices(),
+            home: _auth.currentUser == null ? Onboarding() : BottomNavScreen(),
           );
   }
 }

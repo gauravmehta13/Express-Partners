@@ -19,6 +19,8 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 FirebaseMessaging messaging = FirebaseMessaging.instance;
 
 class BottomNavScreen extends StatefulWidget {
+  const BottomNavScreen({Key? key}) : super(key: key);
+
   @override
   _BottomNavScreenState createState() => _BottomNavScreenState();
 }
